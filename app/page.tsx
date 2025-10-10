@@ -63,11 +63,11 @@ export default function HomePage() {
   const [slicedServiceData, setSlicedServiceData] = useState<Service[]>([]);
   const [slicedProjectData, setSlicedProjectData] = useState([]);
   const [enquiryForm, setEnquiryFrom] = useState({
-    name : "",
-    email : "",
+    name: "",
+    email: "",
     phone: "",
     message: "",
-  })
+  });
   const {
     projectData,
     setProjectData,
@@ -207,89 +207,94 @@ export default function HomePage() {
       ? []
       : testimonialData.slice(0, 3);
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setEnquiryFrom({
+      ...enquiryForm,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setEnquiryFrom({
-        ...enquiryForm,
-        [e.target.name]: e.target.value,
-      });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // Basic validation
+    if (!enquiryForm.name.trim()) {
+      toast.error("Please enter your name");
+      return;
     }
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      
-      // Basic validation
-      if (!enquiryForm.name.trim()) {
-        toast.error("Please enter your name");
-        return;
-      }
-      
-      if (!enquiryForm.email.trim()) {
-        toast.error("Please enter your email");
-        return;
-      }
-      
-      if (!enquiryForm.phone.trim()) {
-        toast.error("Please enter your phone number");
-        return;
-      }
-      
-      if (!enquiryForm.message.trim()) {
-        toast.error("Please enter your message");
-        return;
-      }
+    if (!enquiryForm.email.trim()) {
+      toast.error("Please enter your email");
+      return;
+    }
 
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(enquiryForm.email)) {
-        toast.error("Please enter a valid email address");
-        return;
-      }
+    if (!enquiryForm.phone.trim()) {
+      toast.error("Please enter your phone number");
+      return;
+    }
 
-      const loadingToast = toast.loading("Submitting your enquiry...");
-      
-      try {
-        const res = await axios.post(`${apiBaseUrl}/api/enquiries`, enquiryForm);
-        
-        if (res.status === 201) {
-          toast.dismiss(loadingToast);
-          toast.success("Enquiry submitted successfully! We'll get back to you soon.");
-          setEnquiryFrom({
-            name: "",
-            email: "",
-            phone: "",
-            message: "",
-          });
-          setShowEnquiryPopup(false);
-        } else {
-          toast.dismiss(loadingToast);
-          toast.error("Failed to submit enquiry. Please try again.");
-        }
-      } catch (error: any) {
+    if (!enquiryForm.message.trim()) {
+      toast.error("Please enter your message");
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(enquiryForm.email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    const loadingToast = toast.loading("Submitting your enquiry...");
+
+    try {
+      const res = await axios.post(`${apiBaseUrl}/api/enquiries`, enquiryForm);
+
+      if (res.status === 201) {
         toast.dismiss(loadingToast);
-        console.error("Error submitting enquiry form:", error);
-        
-        if (error.response?.data?.message) {
-          toast.error(error.response.data.message);
-        } else if (error.response?.status === 400) {
-          toast.error("Invalid form data. Please check your information.");
-        } else if (error.response?.status === 500) {
-          toast.error("Server error. Please try again later.");
-        } else {
-          toast.error("Failed to submit enquiry. Please check your connection and try again.");
-        }
+        toast.success(
+          "Enquiry submitted successfully! We'll get back to you soon."
+        );
+        setEnquiryFrom({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+        setShowEnquiryPopup(false);
+      } else {
+        toast.dismiss(loadingToast);
+        toast.error("Failed to submit enquiry. Please try again.");
+      }
+    } catch (error: any) {
+      toast.dismiss(loadingToast);
+      console.error("Error submitting enquiry form:", error);
+
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else if (error.response?.status === 400) {
+        toast.error("Invalid form data. Please check your information.");
+      } else if (error.response?.status === 500) {
+        toast.error("Server error. Please try again later.");
+      } else {
+        toast.error(
+          "Failed to submit enquiry. Please check your connection and try again."
+        );
       }
     }
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {/* Modern Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <video
             className="-z-50 w-full h-full object-cover"
-            src="https://cdn.pixabay.com/video/2025/04/19/272860_large.mp4"
+            src="/earthv2.mp4"
             autoPlay
             loop
             muted
@@ -351,7 +356,7 @@ export default function HomePage() {
       </section>
 
       {/* about us section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-white dark:from-gray-900 dark:to-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 imageBgLeft">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-center">
             {/* Image Section */}
@@ -377,14 +382,14 @@ export default function HomePage() {
                   </span>
                 </h2>
 
-                <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-gray-600 text-gray-800 mb-6 sm:mb-8 leading-relaxed">
                   We are a leading geospatial technology company specializing in
                   GIS, Remote Sensing, and Surveying Services. We deliver
                   innovative spatial solutions that help clients transform
                   location-based data into actionable insights.
                 </p>
 
-                <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg lg:text-gray-600 text-gray-800 mb-6 sm:mb-8 leading-relaxed">
                   Established with the vision to bring precision and
                   intelligence to spatial decision-making, we have successfully
                   delivered projects across government, infrastructure,
@@ -407,207 +412,274 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modern Services Section */}
-      <section className="py-12 px-4 from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-        <div className="max-w-7xl mx-auto">
+      {/* Revolutionary Services Section - Redesigned */}
+      <section className="py-32 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden earthBg2">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/30 rounded-full filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <AnimatedSection>
-            <div className="text-center mb-16">
-              <Badge
-                variant="secondary"
-                className="mb-4 px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-              >
-                Our Services
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Comprehensive{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Geospatial Solutions
+            <div className="text-center mb-24">
+              {/* Enhanced Badge */}
+              <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-full border border-white/10">
+                <div className="relative">
+                  <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
+                  <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-ping"></div>
+                </div>
+                <span className="text-white font-semibold tracking-wide uppercase text-sm">
+                  Revolutionary Services
+                </span>
+              </div>
+
+              {/* Massive Title */}
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.85]" >
+                <span className="block mb-4">NEXT-GEN</span>
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                  GEOSPATIAL
+                </span>
+                <span className="text-4xl md:text-5xl lg:text-6xl font-medium text-white block mt-4">
+                  SOLUTIONS
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                From GIS platforms to 3D modeling, we provide end-to-end
-                solutions that transform how you manage spatial data and
-                infrastructure.
+
+              <p
+                className="text-2xl md:text-3xl text-gray-300 leading-relaxed mb-12 max-w-5xl mx-auto font-light"
+                style={{
+                  textShadow: "2px 2px 4px #000, 0 0 5px #000",
+                }}
+              >
+                Transforming industries with cutting-edge spatial intelligence,
+                advanced analytics, and revolutionary mapping technologies that
+                redefine what's possible.
               </p>
+
+              
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Large Service Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
             {serviceData &&
               slicedServiceData.map((service, index) => (
                 <AnimatedSection
                   key={index}
-                  delay={index * 100}
+                  delay={index * 200}
                   animation="fadeInUp"
                 >
-                  <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 opacity-50 z-10" />
-                    {/* Colored border at top */}
+                  <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20 h-[400px] md:h-[500px]">
+                    {/* Background Image */}
                     <div
-                      className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${servicesIcon[index].color} z-20`}
-                    ></div>
-
-                    {/* Service Image Background */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-60 z-10"></div> */}
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
+                      className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-700"
                       style={{
                         backgroundImage: `url(${
                           service.image || "/contact-banner.png"
                         })`,
-                        filter: "brightness(0.9) contrast(1.1)",
                       }}
                     ></div>
 
-                    {/* Content Overlay */}
-                    <div className="absolute inset-0 backdrop-blur-xl bg-white/5 dark:bg-black/20 transform xl:translate-y-[90%] xl:group-hover:translate-y-0 transition-transform duration-500 z-10"></div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent md:from-black/60 md:via-black/40"></div>
 
-                    <CardContent className="relative h-full p-6 flex flex-col z-10">
-                      <div className="flex items-start">
-                        <div
-                          className={`w-12 h-12 rounded-xl bg-gradient-to-r ${servicesIcon[index].color} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
-                        >
-                          <span className="text-white">
-                            {servicesIcon[index].icon}
-                          </span>
-                        </div>
-                        <h3 className="flex-1 text-lg font-bold text-white ml-4 group-hover:text-blue-300 transition-colors">
+                    {/* Floating Icon */}
+                    <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
+                      <div
+                        className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-r ${servicesIcon[index].color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl`}
+                      >
+                        <span className="text-white text-lg md:text-xl">
+                          {servicesIcon[index].icon}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Service Number */}
+                    <div className="absolute top-6 right-6 md:top-8 md:right-8 z-10">
+                      <div className="text-4xl md:text-6xl font-black text-white/10 group-hover:text-white/20 transition-colors duration-500">
+                        0{index + 1}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative h-full p-6 md:p-8 flex flex-col justify-end z-10">
+                      {/* Mobile spacing to avoid icon overlap */}
+                      <div className="mb-20 md:mb-0"></div>
+                      <div className="space-y-4 md:space-y-6">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-500 leading-tight">
                           {service.title}
                         </h3>
-                      </div>
 
-                      <div className="mt-auto transform xl:translate-y-[100%] xl:group-hover:translate-y-0 transition-transform duration-500 delay-100 translate-y-0 opacity-100 xl:opacity-0 xl:group-hover:opacity-100">
-                        <p className="text-sm text-gray-300 mt-6 mb-4 leading-relaxed backdrop-blur-sm">
+                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
                           {service.description}
                         </p>
-                        <div className="space-y-2 mb-4">
-                          {service.features.slice(0, 2).map((feature, idx) => (
+
+                        {/* Enhanced Features */}
+                        <div className="space-y-2 md:space-y-3">
+                          {service.features?.slice(0, 3).map((feature, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center text-xs text-gray-300"
+                              className="flex items-center text-gray-300 group-hover:text-white transition-colors duration-500"
                             >
-                              <CheckCircle className="w-3 h-3 text-green-400 mr-2 flex-shrink-0" />
-                              {feature}
+                              <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-3 md:mr-4 flex-shrink-0"></div>
+                              <span className="text-xs md:text-sm font-medium">
+                                {feature}
+                              </span>
                             </div>
                           ))}
                         </div>
-                        <Button
-                          variant="outline"
-                          className="w-full text-sm font-medium bg-white/10 border-white/20 backdrop-blur-sm text-white hover:bg-white/20 transition-all"
-                          asChild
-                        >
-                          <Link href={service.image}>
-                            Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                          </Link>
-                        </Button>
+
+                        {/* Action Button */}
+                        <div className="pt-3 md:pt-4">
+                          <Button
+                            variant="outline"
+                            className="bg-white/10 border-white/20 backdrop-blur-xl text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 rounded-xl px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold"
+                            asChild
+                          >
+                            <Link href="/services">
+                              Discover More
+                              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                            </Link>
+                          </Button>
+                        </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+
+                    {/* Hover Effect Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-700"></div>
+                  </div>
                 </AnimatedSection>
               ))}
           </div>
-          <AnimatedSection
-            animation="fadeInUp"
-            delay={4 * 100}
-            className="mt-12 text-center"
-          >
-            <Button
-              variant="default"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              asChild
-            >
-              <Link href="/services">
-                Explore All Services <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+
+          {/* Enhanced CTA */}
+          <AnimatedSection animation="fadeInUp" className="text-center">
+            <div className="relative inline-block">
+              {/* Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+
+              <Button
+                variant="default"
+                className="relative bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 text-white px-12 py-6 text-xl font-bold rounded-3xl shadow-2xl hover:shadow-cyan-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 border-2 border-white/20"
+                asChild
+              >
+                <Link href="/services" className="group">
+                  <span className="relative z-10 flex items-center">
+                    Explore All Services
+                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" />
+                  </span>
+                </Link>
+              </Button>
+            </div>
+
+            <p className="text-gray-400 mt-6 text-lg">
+              Ready to transform your business? Let's build the future together.
+            </p>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Modern Success Stories Section */}
-      <section className="py-24 px-4 bg-gradient-to-br bg-white dark:from-gray-900 dark:to-gray-800">
+      {/* Modern Success Stories Section - Redesigned */}
+      <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950/30 imageBgRight">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
-            <div className="text-center mb-16">
-              <Badge
-                variant="secondary"
-                className="mb-4 px-3 py-1 text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-              >
-                Success Stories
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                Real Projects,{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent ">
-                  Real Results
+            <div className="text-center mb-20">
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-emerald-100 to-green-100 dark:from-emerald-900/30 dark:to-green-900/30 rounded-full">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-semibold text-green-800 dark:text-green-300 tracking-wide uppercase">
+                  Success Stories
                 </span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-8 leading-[0.9]">
+                <span className="block mb-2">
+                  Real{" "}
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    Projects
+                  </span>
+                </span>
+                
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Discover how we've transformed infrastructure and operations
-                across India with our innovative solutions.
-              </p>
+
+              <div className="max-w-4xl mx-auto">
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+                  From smart cities to precision agriculture, explore our
+                  portfolio of groundbreaking projects that showcase the power
+                  of geospatial technology in action.
+                </p>
+
+              </div>
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {/* Uniform Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {projectData &&
-              slicedProjectData.map((project, index) => (
-                <AnimatedSection key={project._id} delay={index * 100}>
-                  <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 hover:border-white/30 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20 ">
-                    <div className="relative h-80 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 opacity-50 z-10" />
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover xl:group-hover:scale-110 xl:transition-transform duration-700"
-                      />
+              slicedProjectData.map((project: any, index: number) => (
+                <AnimatedSection key={project._id} delay={index * 150}>
+                  <div className="group h-full">
+                    <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-900 shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-200/50 dark:border-gray-700/50 h-full flex flex-col">
+                      {/* Image Container with Consistent Height */}
+                      <div className="relative overflow-hidden h-64 flex-shrink-0">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
 
-                      {/* Category Badge - Top Left */}
-                      <div className="absolute top-4 left-4 z-10">
-                        <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
-                          <div className="text-white">{project.icon}</div>
-                          <span className="text-white text-sm font-medium">
-                            {project.category}
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
+
+                        {/* Floating Category Tag */}
+                        <div className="absolute top-4 left-4 z-10">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-black/90 text-gray-900 dark:text-white backdrop-blur-sm">
+                            {project.category || "Geospatial"}
                           </span>
+                        </div>
+
+                        {/* Project Number Badge */}
+                        <div className="absolute top-4 right-4 z-10">
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                            {(index + 1).toString().padStart(2, "0")}
+                          </div>
                         </div>
                       </div>
 
-                      {/* Project Title - Bottom Left */}
-                      <div className="absolute bottom-4 left-4 right-4 z-30">
-                        <h3 className=" text-xl font-bold text-white drop-shadow-lg ">
-                          {project.title}
-                        </h3>
-                      </div>
+                      {/* Content Section */}
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex items-start justify-between mb-4">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                            {project.title}
+                          </h3>
+                        </div>
 
-                      {/* Hover Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent xl:opacity-0 xl:group-hover:opacity-100 xl:transition-opacity duration-500 z-20">
-                        <div className="absolute bottom-12 left-0 right-0 p-6 text-white z-20">
-                          <div className="space-y-4">
-                            <p className="text-sm leading-relaxed opacity-90 line-clamp-3">
-                              {project.description}
-                            </p>
+                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                          {project.description}
+                        </p>
 
-                            <div className="flex items-center space-x-2 text-sm opacity-80">
-                              <MapPin className="w-4 h-4" />
-                              <span>{project.location}</span>
-                            </div>
+                        {/* Tags */}
+                        {project.technologies && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.technologies
+                              .slice(0, 3)
+                              .map((tech: string, techIndex: number) => (
+                                <span
+                                  key={techIndex}
+                                  className="px-2 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-lg font-medium"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                          </div>
+                        )}
 
-                            <div>
-                              <h4 className="font-semibold mb-2 text-sm">
-                                Technologies
-                              </h4>
-                              <div className="flex flex-wrap gap-1.5">
-                                {project.technologies.map((tech, idx) => (
-                                  <Badge
-                                    key={idx}
-                                    variant="secondary"
-                                    className="text-xs bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30"
-                                  >
-                                    {tech}
-                                  </Badge>
-                                ))}
-                              </div>
-                            </div>
+                        {/* Status Bar - Always at bottom */}
+                        <div className="flex items-center justify-center pt-4 border-t border-gray-200/50 dark:border-gray-700/50 mt-auto">
+                          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span>Completed</span>
                           </div>
                         </div>
                       </div>
@@ -620,7 +692,7 @@ export default function HomePage() {
           <AnimatedSection animation="fadeInUp" className="mt-16 text-center">
             <Button
               variant="default"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               asChild
             >
               <Link href="/projects">
@@ -634,7 +706,7 @@ export default function HomePage() {
       <WorkExperienceSection />
 
       {/* Modern Testimonials Section */}
-      <section className="py-24 px-4 bg-white dark:bg-gray-950">
+      <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
@@ -669,7 +741,7 @@ export default function HomePage() {
         </div>
       </section>
       {/* Technology Partners Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50 ">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <div className="text-center mb-14">
@@ -696,7 +768,7 @@ export default function HomePage() {
           {/* <LogoCarousel columnCount={5} logos={partners} /> */}
           {settingsData && (
             <Marquee>
-              {settingsData.clients.map((Logo, index) => (
+              {settingsData.clients.map((Logo: string, index: number) => (
                 <div
                   key={index}
                   className="relative min-h-[80px] w-[180px] mx-8 flex items-center justify-start"
@@ -720,18 +792,15 @@ export default function HomePage() {
 
       {/* Modern Contact Form Section */}
 
-      <section className="py-12 px-4 relative overflow-hidden min-h-screen bg-white">
+      <section className="py-12 px-4 relative overflow-hidden min-h-screen imageBgLeft">
         {/* Enhanced background with gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br bg-white dark:from-slate-950 dark:via-blue-950/30 dark:to-purple-950/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br  "></div>
 
         <div className="max-w-7xl mx-auto relative z-10 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center  h-full">
             {/* Left side with enhanced content */}
             <AnimatedSection animation="fadeInLeft" className="h-full">
               <div className="relative h-full">
-                {/* Floating elements */}
-                {/* <div className="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-br from-blue-500/30 to-cyan-500/30 rounded-2xl rotate-12 filter blur-lg"></div> */}
-                {/* <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full filter blur-md"></div> */}
 
                 <div className="relative z-10 mb-8">
                   {/* Tech-inspired subtitle */}
@@ -859,7 +928,7 @@ export default function HomePage() {
                           value={enquiryForm.phone}
                           onChange={handleInputChange}
                           className="w-full px-4 py-4 rounded-xl border border-white/30 dark:border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition-all duration-300 placeholder:text-gray-500 dark:placeholder:text-gray-400"
-                          placeholder="+1 (555) 123-4567"
+                          placeholder="+91 1234567890"
                         />
                       </div>
 

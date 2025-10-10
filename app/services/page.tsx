@@ -184,7 +184,7 @@ const ServicePage = () => {
         </section>
 
         {/* Core Services Grid */}
-        <section className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section className="py-20 px-4 bg-white dark:bg-gray-900 imageBgRight">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection
               animation="fadeInUp"
@@ -412,17 +412,17 @@ const ServicePage = () => {
           </div>
         </section>
 
-        <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-700 relative overflow-hidden">
-          <div
-            className="absolute inset-0 bg-fixed bg-center bg-repeat opacity-50"
+        <section className="py-20 px-4  relative overflow-hidden earthBgLow">
+          {/* <div
+            className="absolute inset-0 bg-fixed bg-center bg-repeat "
             style={{
-              backgroundImage: `url("https://imgs.search.brave.com/lbjzsd5eP2_Of6sM-raUr9gsobGxtVHIJSCLqxIaSjU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjE4/NTMzNzUwNC9waG90/by9hdXRvbWF0aW9u/LW9mLWJ1c2luZXNz/LW9yLXJvYm90aWMt/cHJvY2Vzcy1ycGEt/dGVjaG5vbG9neS10/cmFuc2Zlci1vZi1k/YXRhLWJldHdlZW4t/YXBwbGljYXRpb24u/anBnP2I9MSZzPTYx/Mng2MTImdz0wJms9/MjAmYz1XT1o3Q2Uz/R2pZLW5uQTFTdXNn/aVZQY0t3Y0I2VjN1/bkZzT3RCOHVnQVln/PQ")`,
+              backgroundImage: `url("/earth3.jpg")`,
               backgroundAttachment: "fixed",
               backgroundRepeat: "no-repeat",
               objectFit: "cover",
               backgroundSize: "cover",
             }}
-          ></div>
+          ></div> */}
 
           <div className="relative max-w-4xl mx-auto text-center">
             <AnimatedSection animation="fadeInUp" delay={0}>

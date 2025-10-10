@@ -35,7 +35,7 @@ const projectionConfig = {
 
 const WorkExperienceSection = () => {
   return (
-    <section className="py-24 px-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+    <section className="py-24 px-4  relative overflow-hidden earthBg">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -43,17 +43,17 @@ const WorkExperienceSection = () => {
           <div className="text-center mb-16">
             <Badge
               variant="secondary"
-              className="mb-4 px-3 py-1 text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200"
+              className="mb-4 px-3 py-1 text-xs font-medium bg-indigo-100 text-indigo-800 "
             >
               Our Presence
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Serving Clients{" "}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Across India
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               We've successfully delivered projects and solutions across
               multiple states, building a strong network of satisfied clients
               throughout the country.
@@ -66,7 +66,7 @@ const WorkExperienceSection = () => {
           <AnimatedSection animation="fadeInLeft">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-3xl filter blur-xl transform rotate-1"></div>
-              <div className="relative p-6 rounded-3xl bg-white/90 dark:bg-gray-900/90 shadow-2xl border border-white/20 backdrop-blur-sm">
+              <div className="relative p-6 rounded-3xl bg-white/20 shadow-2xl border border-white/20 backdrop-blur-sm">
                 <ComposableMap
                   projection="geoMercator"
                   projectionConfig={projectionConfig}
@@ -138,24 +138,24 @@ const WorkExperienceSection = () => {
           {/* Right side: State list with enhanced styling */}
           <AnimatedSection animation="fadeInRight">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">
+              <h3 className="text-2xl font-bold text-white mb-8">
                 Our Project Locations
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {stateData.map((state) => (
                   <div
                     key={state.id}
-                    className="group relative p-4 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-500"
+                    className="group relative p-4 rounded-xl bg-white/20 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-indigo-500 dark:hover:border-indigo-500"
                   >
                     <div className="flex items-center space-x-3">
                       <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900 group-hover:bg-indigo-500 transition-colors">
                         <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400 group-hover:text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white group-hover:text-indigo-500 transition-colors">
+                        <h4 className="font-semibold text-white group-hover:text-indigo-500 transition-colors">
                           {state.name}
                         </h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-gray-400">
                           Active Projects
                         </p>
                       </div>

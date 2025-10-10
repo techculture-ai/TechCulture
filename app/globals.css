@@ -324,3 +324,11 @@ html {
 .animate-marquee-reverse {
   animation: marquee 30s linear infinite reverse;
 }
+
+.imageBgLeft{  background: url("/graphic02.webp") no-repeat top left ;}
+
+.imageBgRight{  background: url("/graphic10.webp") no-repeat top right;}
+
+.earthBg{  background: url("/earth5.jpg") no-repeat center center; background-size: cover; }
+.earthBg2{  background: url("/earth2.jpg") no-repeat center center; background-size: cover; }
+.earthBgLow{  background: url("/earth3.jpg") no-repeat center center; background-size: cover; }
