@@ -170,7 +170,7 @@ export default function SurveyPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="pb-20 pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50 overflow-hidden relative">
+      <section className="pb-12 sm:pb-16 md:pb-20 pt-24 sm:pt-28 md:pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50 overflow-hidden relative">
         <div className="absolute inset-0">
           <Image fill alt="referenceImage" className="object-cover" src="https://images.pexels.com/photos/734428/pexels-photo-734428.jpeg" />
           {/* Dark overlay */}
@@ -191,7 +191,7 @@ export default function SurveyPage() {
       </section>
 
       {/* Survey Types Grid */}
-      <section className="pt-16 pb-20 px-6">
+      <section className="pt-12 sm:pt-14 md:pt-16 pb-12 sm:pb-16 md:pb-20 px-6">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-8">
             {surveyTypes.map((survey, index) => (

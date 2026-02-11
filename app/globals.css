@@ -149,7 +149,7 @@
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(248, 250, 252) 50%, rgb(241, 245, 249) 100%);
+    background: linear-gradient(135deg, rgb(250, 250, 250) 0%, rgb(245, 247, 250) 50%, rgb(240, 244, 248) 100%);
   }
 
   .dark .gradient-bg {
@@ -325,6 +325,25 @@ html {
   animation: marquee 30s linear infinite reverse;
 }
 
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
 .imageBgLeft{  background: url("/graphic02.webp") no-repeat top left ;}
 
 .imageBgRight{  background: url("/graphic10.webp") no-repeat top right;}
@@ -332,3 +351,68 @@ html {
 .earthBg{  background: url("/earth5.jpg") no-repeat center center; background-size: cover; }
 .earthBg2{  background: url("/earth2.jpg") no-repeat center center; background-size: cover; }
 .earthBgLow{  background: url("/earth3.jpg") no-repeat center center; background-size: cover; }
+
+/* Mobile spacing optimizations */
+@media (max-width: 640px) {
+  .section-padding {
+    @apply py-8;
+  }
+  
+  .section-padding-lg {
+    @apply py-12;
+  }
+  
+  /* Reduce excessive bottom spacing on mobile */
+  section[class*="py-20"] {
+    @apply py-8;
+  }
+  
+  section[class*="py-24"] {
+    @apply py-12;
+  }
+  
+  section[class*="py-32"] {
+    @apply py-16;
+  }
+  
+  section[class*="py-16"] {
+    @apply py-8;
+  }
+  
+  section[class*="py-12"] {
+    @apply py-6;
+  }
+  
+  section[class*="py-10"] {
+    @apply py-6;
+  }
+  
+  /* Reduce margins */
+  .mb-12 {
+    @apply mb-6;
+  }
+  
+  .mt-16 {
+    @apply mt-8;
+  }
+  
+  /* Hero sections */
+  .mobile-hero-padding {
+    @apply py-12;
+  }
+  
+  /* Compact mobile layout */
+  .mobile-compact {
+    @apply space-y-4;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .section-padding {
+    @apply py-12;
+  }
+  
+  .section-padding-lg {
+    @apply py-16;
+  }
+}

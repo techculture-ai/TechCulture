@@ -51,7 +51,7 @@ export default function PhotoGallery() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <section className="relative overflow-hidden pb-20 pt-30 px-6">
+      <section className="relative overflow-hidden pb-12 sm:pb-16 md:pb-20 pt-24 sm:pt-28 md:pt-30 px-6">
         <div className="absolute inset-0">
           <Image
             fill
@@ -110,7 +110,7 @@ export default function PhotoGallery() {
           </AnimatedSection>
         </div>
       </section>
-      <div className="max-w-7xl mx-auto px-4 py-20">
+      <div className="max-w-7xl mx-auto px-4 py-12 sm:py-16 md:py-20">
         {/* Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           <AnimatePresence>

@@ -55,7 +55,7 @@ export default function ContactPage() {
     fetchData();
   }, [settingsData, setSettingsData]);
 
-  let contactInfo = [];
+  let contactInfo: any[] = [];
   if(settingsData){ contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
@@ -194,36 +194,32 @@ export default function ContactPage() {
 
   if (isSubmitted) {
     return (
-      <div className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <AnimatedSection>
-            <Card className="glass-card glow max-w-2xl mx-auto">
-              <CardContent className="p-16">
-                <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-8">
-                  <CheckCircle className="w-10 h-10 text-green-500" />
-                </div>
-                <h2 className="text-4xl font-bold font-poppins text-foreground mb-6">Thank You!</h2>
-                <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                  Your message has been sent successfully. We'll get back to you within 24 hours.
-                </p>
-                <Button
-                  className="btn-primary rounded-full px-8"
-                  onClick={() => {
-                    setIsSubmitted(false)
-                    setFormData({
-                      name: "",
-                      email: "",
-                      phone: "",
-                      company: "",
-                      service: "",
-                      message: "",
-                    })
-                  }}
-                >
-                  Send Another Message
-                </Button>
-              </CardContent>
-            </Card>
+      <div className="min-h-screen flex items-center justify-center py-20 sm:py-28 md:py-32 px-4 bg-gray-50 dark:bg-slate-950">
+        <div className="max-w-2xl mx-auto text-center">
+          <AnimatedSection animation="fadeInUp">
+            <div className="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-8">
+              <CheckCircle className="w-10 h-10 text-emerald-600 dark:text-emerald-400" />
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">Thank You!</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+              Your message has been sent successfully. We'll get back to you within 24 hours.
+            </p>
+            <Button
+              className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
+              onClick={() => {
+                setIsSubmitted(false)
+                setFormData({
+                  name: "",
+                  email: "",
+                  phone: "",
+                  company: "",
+                  service: "",
+                  message: "",
+                })
+              }}
+            >
+              Send Another Message
+            </Button>
           </AnimatedSection>
         </div>
       </div>
@@ -231,280 +227,312 @@ export default function ContactPage() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/20 to-white dark:from-slate-950 dark:via-emerald-950/10 dark:to-slate-950">
       {/* Hero Section */}
-      <section className="pb-20 pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50 relative overflow-hidden">
-        {/* <ParallaxSection speed={0.3} className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10"></div>
-        </ParallaxSection> */}
-        <div className="absolute inset-0">
-          <Image
-            fill
-            alt="referenceImage"
-            className="object-cover"
-            src="./contact-banner.png"
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
-        </div>
+     
 
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <AnimatedSection>
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-6xl md:text-8xl font-bold font-poppins mb-8 leading-tight text-white">
-                Get In <span className="text-gradient">Touch</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-200 mb-12 leading-relaxed">
-                Ready to transform your business? Let's discuss your project and
-                explore how we can help you achieve your goals.
-              </p>
-            </div>
+      {/* Contact Overview Section */}
+      <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              Get In Touch <span className="text-emerald-600 dark:text-emerald-400">With Us</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Ready to transform your business? Let's discuss your project and explore how we can help you achieve your goals
+            </p>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-32 px-6">
+      <section id="contact-form" className="py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Form */}
-            <AnimatedSection animation="fadeInLeft">
-              <Card className="glass-nav-glow backdrop-blur-3xl bg-white/5 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl h-full">
-                <CardContent className="p-10">
-                  <div className="mb-8">
-                    <h2 className="text-3xl font-bold font-poppins text-foreground mb-4">
-                      Start Your <span className="text-gradient">Project</span>
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Fill out the form below and we'll get back to you within
-                      24 hours to discuss your requirements.
-                    </p>
-                  </div>
+            <div>
+              <div className="mb-8">
+                <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
+                  <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Contact Form</span>
+                </div>
+                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                  Send us a Message
+                </h2>
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Fill out the form and we'll get back to you within 24 hours to discuss your requirements.
+                </p>
+              </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-foreground font-medium mb-2">
-                          Name *
-                        </label>
-                        <Input
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                          className="glass-card border-white/20 dark:border-white/10 bg-transparent"
-                          placeholder="Your full name"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-foreground font-medium mb-2">
-                          Email *
-                        </label>
-                        <Input
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          required
-                          className="glass-card border-white/20 dark:border-white/10 bg-transparent"
-                          placeholder="your@email.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-foreground font-medium mb-2">
-                          Phone
-                        </label>
-                        <Input
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className="glass-card border-white/20 dark:border-white/10 bg-transparent"
-                          placeholder="+91 98765 43210"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-foreground font-medium mb-2">
-                          Company
-                        </label>
-                        <Input
-                          name="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          className="glass-card border-white/20 dark:border-white/10 bg-transparent"
-                          placeholder="Your company name"
-                        />
-                      </div>
-                    </div>
-
+              <AnimatedSection animation="fadeInLeft" delay={0}>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-foreground font-medium mb-2">
-                        Service Interest
+                      <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                        Name *
                       </label>
-                      <select
-                        name="service"
-                        value={formData.service}
-                        onChange={handleInputChange}
-                        className="w-full glass-card border-white/20 dark:border-white/10 bg-transparent rounded-md shadow px-4 py-3 text-foreground"
-                      >
-                        <option value="">Select a service</option>
-                        {services.map((service) => (
-                          <option
-                            key={service}
-                            value={service}
-                            className="bg-transparent text-foreground "
-                          >
-                            {service}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-foreground font-medium mb-2">
-                        Message *
-                      </label>
-                      <Textarea
-                        name="message"
-                        value={formData.message}
+                      <Input
+                        name="name"
+                        value={formData.name}
                         onChange={handleInputChange}
                         required
-                        rows={5}
-                        className="glass-card border-white/20 dark:border-white/10 bg-transparent"
-                        placeholder="Tell us about your project requirements..."
+                        className="border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        placeholder="Your full name"
                       />
                     </div>
+                    <div>
+                      <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                        Email *
+                      </label>
+                      <Input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                  </div>
 
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full btn-primary rounded-md py-6 text-lg font-semibold max-w-[40%]"
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                        Phone
+                      </label>
+                      <Input
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        placeholder="+91 98765 43210"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                        Company
+                      </label>
+                      <Input
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        placeholder="Your company name"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                      Service Interest
+                    </label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          Send Message <Send className="ml-2 w-5 h-5" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
+                      <option value="">Select a service</option>
+                      {services.map((service) => (
+                        <option
+                          key={service}
+                          value={service}
+                        >
+                          {service}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                      Message *
+                    </label>
+                    <Textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      className="border border-gray-200 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                      placeholder="Tell us about your project requirements..."
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold transition-colors"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2 inline-block"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message <Send className="ml-2 w-5 h-5 inline" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </AnimatedSection>
+            </div>
 
             {/* Contact Information */}
-            <AnimatedSection animation="fadeInRight">
-              <div className="space-y-10">
+            <div>
+              <AnimatedSection animation="fadeInRight" delay={100}>
+                <div id="contact-info" className="space-y-10">
                 <div>
-                  <h2 className="text-3xl font-bold font-poppins text-foreground mb-6">
-                    Contact <span className="text-gradient">Information</span>
+                  <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
+                    <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Contact Information</span>
+                  </div>
+                  <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                    Get in Touch
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-8">
-                    We're here to help you succeed. Reach out to us through any
-                    of the following channels.
+                  <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                    We're here to help you succeed. Reach out to us through any of the following channels.
                   </p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   {contactInfo.map((info, index) => (
-                    <Card
-                      key={index}
-                      className="glass-nav-glow backdrop-blur-3xl bg-white/5 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl"
-                    >
-                      <CardContent className="py-4 px-6">
-                        <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
-                          <div className="text-primary">{info.icon}</div>
+                    <AnimatedSection key={index} delay={index * 100} animation="fadeInUp">
+                      <div className="p-6 rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-slate-800 hover:shadow-md transition-shadow">
+                        <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center mb-4">
+                          <div className="text-emerald-600 dark:text-emerald-400">{info.icon}</div>
                         </div>
-                        <h3 className="font-semibold text-foreground mb-2">
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
                           {info.title}
                         </h3>
-                        {info.details.map((detail, idx) => (
+                        {info.details.map((detail: string, idx: number) => (
                           <p
                             key={idx}
-                            className="text-muted-foreground text-sm"
+                            className="text-gray-600 dark:text-gray-400 text-sm"
                           >
                             {detail}
                           </p>
                         ))}
-                        <p className="text-primary text-xs mt-2">
+                        <p className="text-emerald-600 dark:text-emerald-400 text-xs mt-2">
                           {info.description}
                         </p>
-                      </CardContent>
-                    </Card>
+                      </div>
+                    </AnimatedSection>
                   ))}
                 </div>
-              </div>
-            </AnimatedSection>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="pb-10 px-6 space-y-6">
+      <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold font-poppins text-foreground mb-6">
-            Head <span className="text-gradient">office</span>
-          </h2>
-          <AnimatedSection>
-            <Card className="glass-card p-0 overflow-hidden">
-              <div className="relative h-96">
-                {settingsData ? (
-                  <div
-                    className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
-                    dangerouslySetInnerHTML={{
-                      __html: settingsData.registeredIframe,
-                    }}
-                  />
-                ) : (
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.056200150182!2d77.2225690760672!3d28.628077684281838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd33b95c2ef1%3A0xfe68a915348015f8!2sRohit%20House%2C%202%2C%20Tolstoy%20Rd%2C%20Barakhamba%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1754302489577!5m2!1sen!2sin"
-                    className="w-full h-full"
-                    style={{ border: 0 }}
-                    allowFullScreen={true}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                )}
+          <AnimatedSection animation="fadeInUp">
+            <div className="mb-8">
+              <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
+                <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Registered Office</span>
               </div>
-            </Card>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                Head Office
+              </h2>
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96">
+              {settingsData ? (
+                <div
+                  className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
+                  dangerouslySetInnerHTML={{
+                    __html: settingsData.registeredIframe,
+                  }}
+                />
+              ) : (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.056200150182!2d77.2225690760672!3d28.628077684281838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd33b95c2ef1%3A0xfe68a915348015f8!2sRohit%20House%2C%202%2C%20Tolstoy%20Rd%2C%20Barakhamba%2C%20New%20Delhi%2C%20Delhi%20110001!5e0!3m2!1sen!2sin!4v1754302489577!5m2!1sen!2sin"
+                  className="w-full h-full"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              )}
+            </div>
           </AnimatedSection>
         </div>
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold font-poppins text-foreground mb-6">
-            Corporate <span className="text-gradient">office</span>
-          </h2>
-          <AnimatedSection>
-            <Card className="glass-card p-0 overflow-hidden">
-              <div className="relative h-96">
-                {settingsData ? (
-                  <div
-                    className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
-                    dangerouslySetInnerHTML={{
-                      __html: settingsData.officeIframe,
-                    }}
-                  />
-                ) : (
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.336032841482!2d77.35435776491295!3d28.627244195359893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce54f9814a4c1%3A0x729f42021b824a36!2sCorenthum%20Building%2C%2034%2F2%2C%20Block%20A%2C%20Industrial%20Area%2C%20Sector%2062%2C%20Noida%2C%20Uttar%20Pradesh%20201309!5e0!3m2!1sen!2sin!4v1756187696071!5m2!1sen!2sin"
-                    width="600"
-                    height="450"
-                    style={{ border: 0 }}
-                    allowFullScreen={true}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                )}
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection animation="fadeInUp">
+            <div className="mb-8">
+              <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
+                <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Corporate Office</span>
               </div>
-            </Card>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
+                Corporate Office
+              </h2>
+            </div>
+            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96">
+              {settingsData ? (
+                <div
+                  className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
+                  dangerouslySetInnerHTML={{
+                    __html: settingsData.officeIframe,
+                  }}
+                />
+              ) : (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.336032841482!2d77.35435776491295!3d28.627244195359893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce54f9814a4c1%3A0x729f42021b824a36!2sCorenthum%20Building%2C%2034%2F2%2C%20Block%20A%2C%20Industrial%20Area%2C%20Sector%2062%2C%20Noida%2C%20Uttar%20Pradesh%20201309!5e0!3m2!1sen!2sin!4v1756187696071!5m2!1sen!2sin"
+                  className="w-full h-full"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              )}
+            </div>
           </AnimatedSection>
         </div>
       </section>
     </div>
   );
-}
+}      {/* Final CTA Section */}
+      <section className="py-16 sm:py-18 md:py-20 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-fixed bg-center bg-repeat opacity-50"
+          style={{
+            backgroundImage: `url("/home-banner-last.png")`,
+            backgroundAttachment: "fixed",
+            backgroundRepeat: "no-repeat",
+            objectFit: "cover",
+            backgroundSize: "cover",
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20"></div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <AnimatedSection animation="fadeInUp" delay={0}>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Get
+              <span className="block bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                Started?
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Don't hesitate to reach out. Our team is ready to assist you with any questions or project inquiries.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                className="px-8 py-3 bg-white text-emerald-600 hover:bg-gray-100 font-semibold rounded-lg transition-colors"
+                asChild
+              >
+                <a href="#contact-form">Send Message</a>
+              </Button>
+              <Button
+                variant="outline"
+                className="px-8 py-3 border border-white text-white hover:bg-white/10 font-semibold rounded-lg transition-colors"
+                asChild
+              >
+                <a href="#contact-info">View Contact Info</a>
+              </Button>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
