@@ -26,14 +26,20 @@ const { settingsData, setSettingsData } = useSite();
     fetchData();
   }, [settingsData, setSettingsData]);
   return (
-    <footer className="py-16 px-6 border-t border-border/20 bg-background/50">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-900 to-slate-900 dark:from-slate-950 dark:via-slate-950 dark:to-gray-950 text-white overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
+
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-12 relative z-10">
+        {/* Main Footer Content */}
+        <div className="grid md:grid-cols-4 gap-12 mb-12">
+          {/* Brand Section */}
           <div>
-            <div className="text-2xl font-bold text-foreground mb-4">
-              TechCulture <span className="text-primary">Solutions</span>
+            <div className="text-3xl font-bold mb-6">
+              TechCulture <span className="text-emerald-400">Solutions</span>
             </div>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-gray-400 mb-6 leading-relaxed">
               Innovating the future, one solution at a time. Your trusted
               partner in digital transformation.
             </p>
@@ -43,7 +49,7 @@ const { settingsData, setSettingsData } = useSite();
                   href={settingsData.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-500 text-white transition-all duration-300 hover:scale-110"
                 >
                   <Linkedin className="w-5 h-5" />
                 </Link>
@@ -53,7 +59,7 @@ const { settingsData, setSettingsData } = useSite();
                   href={settingsData.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-500 text-white transition-all duration-300 hover:scale-110"
                 >
                   <Twitter className="w-5 h-5" />
                 </Link>
@@ -63,7 +69,7 @@ const { settingsData, setSettingsData } = useSite();
                   href={settingsData.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-500 text-white transition-all duration-300 hover:scale-110"
                 >
                   <Facebook className="w-5 h-5" />
                 </Link>
@@ -73,30 +79,25 @@ const { settingsData, setSettingsData } = useSite();
                   href={settingsData.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-emerald-600 hover:bg-emerald-500 text-white transition-all duration-300 hover:scale-110"
                 >
                   <Instagram className="w-5 h-5" />
-                </Link>
-              )}
-              {/* Fallback Github link if no social links are provided */}
-              {!settingsData?.linkedin && !settingsData?.twitter && !settingsData?.facebook && !settingsData?.instagram && (
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Github className="w-5 h-5" />
                 </Link>
               )}
             </div>
           </div>
 
+          {/* Services Section */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+              Services
+            </h4>
+            <ul className="space-y-3">
               <li>
                 <Link
                   href="/services"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
                 >
                   Core Services
                 </Link>
@@ -104,7 +105,7 @@ const { settingsData, setSettingsData } = useSite();
               <li>
                 <Link
                   href="/projects"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
                 >
                   Projects
                 </Link>
@@ -112,13 +113,17 @@ const { settingsData, setSettingsData } = useSite();
             </ul>
           </div>
 
+          {/* Company Section */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Company</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+              Company
+            </h4>
+            <ul className="space-y-3">
               <li>
                 <Link
                   href="/about"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
                 >
                   About Us
                 </Link>
@@ -126,7 +131,7 @@ const { settingsData, setSettingsData } = useSite();
               <li>
                 <Link
                   href="/projects"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
                 >
                   Projects
                 </Link>
@@ -134,47 +139,56 @@ const { settingsData, setSettingsData } = useSite();
               <li>
                 <Link
                   href="/contact"
-                  className="text-muted-foreground hover:text-primary"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
                 >
                   Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/careers"
+                  className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium"
+                >
+                  Careers
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Contact Info Section */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Contact Info</h4>
+            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+              <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
+              Contact Info
+            </h4>
             {settingsData && (
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <Phone className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <a href={`tel:${settingsData.contactNo}`} className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium">
                     {settingsData.contactNo}
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-4 h-4 text-primary" />
-                  <span className="text-muted-foreground">
-                    {settingsData.email}
-                  </span>
+                  </a>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                  <div className="text-muted-foreground">
+                  <Mail className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <a href={`mailto:${settingsData.email}`} className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 font-medium break-all">
+                    {settingsData.email}
+                  </a>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <div className="text-gray-400 text-sm">
                     {settingsData.officeAddress && (
-                      <div className="mb-2">
-                        <div className="font-medium">Office:</div>
+                      <div className="mb-3">
+                        <div className="font-medium text-white mb-1">Office</div>
                         <div>{settingsData.officeAddress}</div>
                       </div>
                     )}
                     {settingsData.registeredAddress && (
                       <div>
-                        <div className="font-medium">Registered:</div>
+                        <div className="font-medium text-white mb-1">Registered</div>
                         <div>{settingsData.registeredAddress}</div>
                       </div>
-                    )}
-                    {!settingsData.officeAddress && !settingsData.registeredAddress && (
-                      <span>Address not available</span>
                     )}
                   </div>
                 </div>
@@ -183,10 +197,33 @@ const { settingsData, setSettingsData } = useSite();
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/20 text-center">
-          <p className="text-muted-foreground">
+        {/* Divider */}
+        <div className="border-t border-gray-800 my-8"></div>
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-gray-500 text-sm">
             © 2025 TechCulture Solutions Pvt. Ltd. All rights reserved.
           </p>
+          
+          {/* Center - Developed By */}
+          <div className="text-center">
+            <p className="text-gray-500 text-sm">
+              Developed by{" "}
+              <a href="https://techculture.ai" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 font-semibold transition-colors">
+                Techculture.ai
+              </a>
+            </p>
+          </div>
+          
+          <div className="flex space-x-6">
+            <Link href="#" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="text-gray-500 hover:text-emerald-400 text-sm transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

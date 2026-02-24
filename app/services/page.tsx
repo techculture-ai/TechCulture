@@ -30,6 +30,7 @@ import {
   Shield,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSite } from "@/context/siteContext";
 import axios from "axios";
 
@@ -152,69 +153,42 @@ const ServicePage = () => {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/20 to-white dark:from-slate-950 dark:via-emerald-950/10 dark:to-slate-950">
         {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden pb-20 pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50">
-          <div className="absolute inset-0">
-            <Image
-              fill
-              alt="referenceImage"
-              className="object-cover"
-              src="./services-banner.png"
-            />
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
-          </div>
+     
 
-          <div className="relative max-w-7xl mx-auto text-center">
-            <AnimatedSection animation="fadeInUp" delay={0}>
-              <h1 className="text-6xl md:text-8xl font-bold font-poppins mb-8 leading-tight text-white">
-                What <span className="text-gradient">We Do</span>
-              </h1>
-              <p className="text-xl md:text-2xl  dark:text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed text-gray-300">
-                Turning Geospatial Data into Intelligent Solutions
-              </p>
-              <p className="text-lg text-gray-200 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
-                TechCulture offers a full suite of GIS-powered services,
-                combining hardware, software, and enterprise-level applications
-                in one integrated platform.
+        {/* Services Overview Section */}
+        <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                Our Core <span className="text-emerald-600 dark:text-emerald-400">Services</span>
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Comprehensive geospatial solutions designed to transform your business operations
               </p>
             </AnimatedSection>
           </div>
         </section>
 
         {/* Core Services Grid */}
-        <section className="py-20 px-4 bg-white dark:bg-gray-900 imageBgRight">
+        <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
           <div className="max-w-7xl mx-auto">
-            <AnimatedSection
-              animation="fadeInUp"
-              delay={0}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6  dark:from-white dark:to-blue-200 bg-clip-text ">
-                Our Core <span className="text-gradient">Services</span>
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Comprehensive geospatial solutions designed to transform your
-                business operations
-              </p>
-            </AnimatedSection>
-
-            {coreServices && (
+            {coreServices && coreServices.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {coreServices.map((service, index) => (
+                {coreServices.map((service, index) => {
+                  const iconData = coreServicesIcon[index] || coreServicesIcon[0]; // Fallback to first icon
+                  return (
                   <AnimatedSection
-                    key={index}
+                    key={service._id || index}
                     animation="fadeInUp"
-                    delay={coreServicesIcon[index].delay}
+                    delay={iconData?.delay || 0}
                   >
-                    <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
+                    <Card className="group relative overflow-hidden border border-emerald-200/30 dark:border-emerald-800/50 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 h-full rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:border-emerald-400 dark:hover:border-emerald-600">
                       {/* Background Image */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 opacity-50 z-10" />
-                      {/* upper border color */}
-                      <div
-                        className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${coreServicesIcon[index].color} z-30`}
-                      ></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 opacity-40 z-10" />
+                      {/* Top border accent - emerald */}
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-transparent z-30"></div>
                       <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                         style={{
@@ -244,12 +218,12 @@ const ServicePage = () => {
                       <CardContent className="relative h-full p-6 flex flex-col z-10">
                         <div className="flex items-start">
                           <div
-                            className={`p-3 rounded-xl bg-gradient-to-r ${coreServicesIcon[index].color} text-white group-hover:scale-110 transition-transform duration-300`}
+                            className={`p-3 rounded-xl bg-gradient-to-r ${iconData?.color || 'from-emerald-500 to-emerald-600'} text-white group-hover:scale-110 transition-transform duration-300`}
                           >
-                            {coreServicesIcon[index].icon}
+                            {iconData?.icon || <Globe className="w-12 h-12" />}
                           </div>
-                          <h3 className="flex-1 text-xl font-bold text-white ml-4 group-hover:text-blue-300 transition-colors">
-                            {service.title}
+                          <h3 className="flex-1 text-xl font-bold text-white ml-4 group-hover:text-emerald-300 transition-colors">
+                            {service.title || 'Service Title'}
                           </h3>
                         </div>
                         {/* <h3 className="text-2xl font-bold text-white">
@@ -257,10 +231,10 @@ const ServicePage = () => {
                       </h3> */}
                         <div className="mt-auto xl:transform xl:translate-y-[100%] xl:group-hover:translate-y-0 xl:transition-transform duration-500 delay-100 pt-4">
                           <p className="text-gray-100 leading-relaxed transform xl:opacity-0 xl:group-hover:opacity-100 xl:transition-opacity duration-500 delay-100">
-                            {service.description}
+                            {service.description || 'Service description not available'}
                           </p>
                           <div className="space-y-2 transform xl:opacity-0 xl:group-hover:opacity-100 xl:transition-opacity duration-500 delay-200">
-                            {service.features.map((feature, featureIndex) => (
+                            {service.features && service.features.length > 0 ? service.features.map((feature, featureIndex) => (
                               <div
                                 key={featureIndex}
                                 className="flex items-center text-sm text-gray-200"
@@ -268,21 +242,22 @@ const ServicePage = () => {
                                 <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
                                 {feature}
                               </div>
-                            ))}
+                            )) : null}
                           </div>
                         </div>
                       </CardContent>
                       {/* </div> */}
                     </Card>
                   </AnimatedSection>
-                ))}
+                  );
+                })}
               </div>
             )}
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 px-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+        <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection
               animation="fadeInUp"
@@ -290,7 +265,7 @@ const ServicePage = () => {
               className="text-center mb-16"
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-                Why Choose <span className="text-gradient">TechCulture?</span>
+                Why Choose <span className="text-emerald-600 dark:text-emerald-400">TechCulture?</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
                 Proven track record of delivering exceptional results
@@ -304,10 +279,10 @@ const ServicePage = () => {
                   animation="scaleIn"
                   delay={index * 100}
                 >
-                  <Card className="text-center p-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <Card className="text-center p-6 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-emerald-200/40 dark:border-emerald-800/50 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 hover:border-emerald-400 dark:hover:border-emerald-600 rounded-2xl">
                     <CardContent className="p-0">
                       <div className="flex justify-center mb-4">
-                        <div className="p-3 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+                        <div className="p-3 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white">
                           {stat.icon}
                         </div>
                       </div>
@@ -326,15 +301,15 @@ const ServicePage = () => {
         </section>
 
         {/* main Services Section */}
-        <section className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
           <div className="max-w-7xl mx-auto">
             <AnimatedSection
               animation="fadeInUp"
               delay={0}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r  dark:from-white dark:to-blue-200 bg-clip-text">
-                Our Service <span className="text-gradient">Portfolio</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+                Our Service <span className="text-emerald-600 dark:text-emerald-400">Portfolio</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 At TechCulture Solutions Private Limited, we deliver modern
@@ -344,18 +319,18 @@ const ServicePage = () => {
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {mainServices.map((service, index) => (
+              {mainServices && mainServices.length > 0 ? mainServices.map((service, index) => {
+                const iconData = mainServicesIcon[index] || mainServicesIcon[0]; // Fallback to first icon
+                return (
                 <AnimatedSection
-                  key={index}
+                  key={service._id || index}
                   animation="fadeInUp"
                   delay={index * 200}
                 >
-                  <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 h-full">
-                    <div
-                      className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r bg-purple-500 z-20`}
-                    ></div>
+                  <Card className="group relative overflow-hidden border border-emerald-200/30 dark:border-emerald-800/50 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500 h-full rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:border-emerald-400 dark:hover:border-emerald-600">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-transparent z-20"></div>
                     {/* Background Image */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black opacity-50 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 opacity-40 z-10" />
                     <div
                       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                       style={{
@@ -376,11 +351,11 @@ const ServicePage = () => {
                     {/* Content */}
                     <CardContent className="relative h-full p-6 flex flex-col z-10">
                       <div className="flex items-start">
-                        <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-white group-hover:scale-110 transition-transform duration-300">
-                          {mainServicesIcon[index].icon}
+                        <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                          {iconData?.icon || <Map className="w-8 h-8" />}
                         </div>
-                        <h3 className="flex-1 text-lg font-bold text-white ml-4 group-hover:text-blue-300 transition-colors">
-                          {service.title}
+                        <h3 className="flex-1 text-lg font-bold text-white ml-4 group-hover:text-emerald-200 transition-colors">
+                          {service.title || 'Service Title'}
                         </h3>
                       </div>
 
@@ -389,10 +364,10 @@ const ServicePage = () => {
                         {service.title}
                       </h3> */}
                         <p className="text-gray-100 leading-relaxed transform opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                          {service.description}
+                          {service.description || 'Service description not available'}
                         </p>
                         <div className="space-y-2 transform opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                          {service.features.map((feature, featureIndex) => (
+                          {service.features && service.features.length > 0 ? service.features.map((feature, featureIndex) => (
                             <div
                               key={featureIndex}
                               className="flex items-center text-sm text-gray-200"
@@ -400,19 +375,24 @@ const ServicePage = () => {
                               <CheckCircle className="w-4 h-4 mr-3 text-green-400 flex-shrink-0" />
                               {feature}
                             </div>
-                          ))}
+                          )) : null}
                         </div>
                       </div>
                     </CardContent>
                     {/* </div> */}
                   </Card>
                 </AnimatedSection>
-              ))}
+                );
+              }) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-gray-600 dark:text-gray-400">No services available at the moment.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
-        <section className="py-20 px-4  relative overflow-hidden earthBgLow">
+        <section className="py-16 sm:py-18 md:py-20 px-4 relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-600">
           {/* <div
             className="absolute inset-0 bg-fixed bg-center bg-repeat "
             style={{
@@ -429,11 +409,31 @@ const ServicePage = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
                 Ready to Transform Your Business?
               </h2>
-              <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-emerald-50 mb-8 max-w-2xl mx-auto">
                 Let's discuss how our geospatial solutions can streamline your
                 operations, enhance data accuracy, and support informed
                 decision-making.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button
+                  className="px-8 py-3 bg-white text-emerald-600 hover:bg-emerald-50 font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+                  asChild
+                >
+                  <Link href="/contact">
+                    Get Started Today
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button
+                  className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-emerald-600 bg-transparent font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+                  asChild
+                >
+                  <Link href="/projects">
+                    View Our Work
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
             </AnimatedSection>
           </div>
         </section>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/components/animated-section";
 import {
   Users,
   MapPin,
@@ -133,61 +134,53 @@ export default function TeamPage() {
   const currentTeam = employees[activeCategory] || [];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/20 to-white dark:from-slate-950 dark:via-emerald-950/10 dark:to-slate-950">
       {/* Hero Section */}
-      <section className="relative pb-20 pt-30 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            fill
-            alt="referenceImage"
-            className="object-cover"
-            src="/team-banner.jpg"
-          />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-            <span className="bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-              The People Behind
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Our Success
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 dark:text-gray-300 mb-12 max-w-4xl mx-auto">
-            Meet the passionate professionals who bring innovation, expertise,
-            and dedication to every project we undertake.
-          </p>
+     
+
+      {/* Team Overview Section */}
+      <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
+        <div className="max-w-7xl mx-auto">
+            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              Team Behind <span className="text-emerald-600 dark:text-emerald-400">Success</span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              Meet the passionate professionals who bring innovation, expertise, and dedication to every project we undertake
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Team Categories Navigation */}
-      <section className="py-8 px-4 z-40 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 bg-white/90 dark:bg-gray-950/90">
+      <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-center space-x-1">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={activeCategory === category.id ? "default" : "ghost"}
-                onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full transition-all duration-300 ${
-                  activeCategory === category.id
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                    : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                }`}
-              >
-                {category.icon}
-                <span className="font-medium">{category.label}</span>
-              </Button>
-            ))}
+          {/* Tab Navigation */}
+          <div className="mb-8 sm:mb-10 md:mb-12 flex justify-center">
+            <AnimatedSection>
+              <div className="flex glass-card rounded-full p-1.5 gap-1">
+                {categories.map((category) => (
+                  <Button
+                    key={category.id}
+                    onClick={() => setActiveCategory(category.id)}
+                    className={`flex items-center space-x-2 px-4 py-2 text-sm rounded-full transition-all duration-300 whitespace-nowrap ${
+                      activeCategory === category.id
+                        ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg"
+                        : "text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-800 bg-white/50 dark:bg-slate-800/50"
+                    }`}
+                  >
+                    {category.icon}
+                    <span>{category.label}</span>
+                  </Button>
+                ))}
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Team Members Grid */}
-      <section className="py-20 px-4 bg-white dark:bg-gray-950">
+      <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -202,11 +195,11 @@ export default function TeamPage() {
           
             {currentTeam.map((member: Employee, index: number) => {
               const gradients = [
-                'from-blue-600 to-purple-600',
-                'from-green-600 to-teal-600',
-                'from-purple-600 to-pink-600',
-                'from-orange-600 to-red-600',
-                'from-indigo-600 to-blue-600'
+                'from-emerald-600 to-teal-600',
+                'from-emerald-600 to-green-600',
+                'from-teal-600 to-emerald-600',
+                'from-emerald-500 to-teal-500',
+                'from-teal-600 to-emerald-500'
               ];
               const gradient = gradients[index % gradients.length];
               
@@ -270,23 +263,23 @@ export default function TeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      <section className="py-16 sm:py-18 md:py-20 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center opacity-10"></div>
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Want to Join Our{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-100 to-teal-100 bg-clip-text text-transparent">
               Amazing Team
             </span>
             ?
           </h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-emerald-50 mb-8 max-w-2xl mx-auto">
             We're always looking for talented individuals who share our passion
             for innovation and excellence. Explore career opportunities with us.
           </p>
           <Link
             href={"/careers"}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
+            className="bg-white hover:bg-gray-100 text-emerald-600 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             View Open Positions
           </Link>

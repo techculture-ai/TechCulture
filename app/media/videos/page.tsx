@@ -181,7 +181,7 @@ const categories = [
 
   return (
     <div className="min-h-screen ">
-      <section className="pb-20 pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50 relative overflow-hidden">
+      <section className="pb-12 sm:pb-16 md:pb-20 pt-24 sm:pt-28 md:pt-30 px-6 bg-gradient-to-b from-sky-400 via-sky-200 to-sky-50 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
             fill
@@ -236,7 +236,7 @@ const categories = [
           </AnimatedSection>
         </div>
       </section>
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-12 sm:py-16 md:py-20">
         {/* Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           <AnimatePresence>

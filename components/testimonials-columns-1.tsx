@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import { Star, Award, Zap, Target, TrendingUp, Users } from "lucide-react";
 
 interface Testimonial {
   message: string;
@@ -8,6 +9,8 @@ interface Testimonial {
   name: string;
   title: string;
 }
+
+const iconsList = [Star, Award, Zap, Target, TrendingUp, Users];
 
 export const TestimonialsColumn = (props: {
   className?: string;
@@ -79,33 +82,32 @@ export const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ message, image, name, title }, i) => (
-                <div
-                  className="glass-card p-8 rounded-3xl border border-white/20 dark:border-white/10 shadow-md backdrop-blur-xl bg-white/60 dark:bg-black/10 w-full max-w-md"
-                  key={i}
-                >
-                  <div className="text-base text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                    {message}
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <img
-                      width={48}
-                      height={48}
-                      src={image}
-                      alt={name}
-                      className="h-12 w-12 rounded-full object-cover border-2 border-white/20 dark:border-white/10"
-                    />
-                    <div className="flex flex-col">
-                      <div className="font-semibold text-lg tracking-tight leading-5 text-gray-900 dark:text-white">
-                        {name}
+              {props.testimonials.map(({ message, name, title }, i) => {
+                const IconComponent = iconsList[i % iconsList.length];
+                return (
+                  <div
+                    className="glass-card p-8 rounded-3xl border border-white/20 dark:border-white/10 shadow-md backdrop-blur-xl bg-white/60 dark:bg-black/10 w-full max-w-md hover:shadow-xl hover:border-emerald-300/40 dark:hover:border-emerald-700/40 transition-all duration-300"
+                    key={i}
+                  >
+                    <div className="text-base text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+                      {message}
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 flex items-center justify-center flex-shrink-0 shadow-lg">
+                        <IconComponent className="w-6 h-6 text-white" />
                       </div>
-                      <div className="text-sm opacity-70 tracking-tight text-gray-600 dark:text-gray-400">
-                        {title}
+                      <div className="flex flex-col">
+                        <div className="font-semibold text-lg tracking-tight leading-5 text-gray-900 dark:text-white">
+                          {name}
+                      </div>
+                        <div className="text-sm opacity-70 tracking-tight text-gray-600 dark:text-gray-400">
+                          {title}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </React.Fragment>
           )),
         ]}

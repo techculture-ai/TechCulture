@@ -10,6 +10,17 @@ import Image from "next/image"
 import { useSite } from "@/context/siteContext";
 import axios from "axios";
 
+interface SubNavItem {
+  href: string;
+  label: string;
+}
+
+interface NavItem {
+  href: string;
+  label: string;
+  dropdown?: SubNavItem[];
+}
+
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -56,20 +67,13 @@ export function Navigation() {
 
   const pathname = usePathname()
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { href: "/", label: "Home" },
     // { href: "/technologies", label: "Technologies" },
     // { href: "/industries", label: "Industries" },
     // { href: "/survey", label: "Survey" },
     { href: "/services", label: "Our Services" },
     { href: "/projects", label: "Projects" },
-    {
-      label: "Media",
-      dropdown: [
-        { href: "/media/photos", label: "Photo Gallery" },
-        { href: "/media/videos", label: "Video Gallery" },
-      ],
-    },
     // { href: "/insights", label: "Insights" },
     { href: "/team", label: "Our Team" },
     { href: "/about", label: "About Us" },
@@ -91,201 +95,205 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed z-50 w-full flex justify-between items-center px-10 transition-all duration-500 ${
-        scrolled ? "top-2" : "top-4"
+      className={`fixed z-50 w-full transition-all duration-500 ${
+        scrolled
+          ? "top-0 shadow-md bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-gray-800"
+          : "top-0 bg-white/95 dark:bg-slate-950/95"
       }`}
     >
-      <Link href="/" className="text-xl font-bold mr-8 z-50">
-        <div className="relative w-[100px] h-[100px]">
-         
-          {/* Adjust size as needed */}
-          {settingsData && <Image
-            src={settingsData.logo || "logo.png"}
-            alt="logo"
-            fill
-            className="object-contain"
-          />}
-        </div>
-      </Link>
+      <div className="flex justify-between items-center px-6 sm:px-10 lg:px-16 py-4">
+        {/* Logo */}
+        <Link href="/" className="flex-shrink-0 z-50">
+          <div className="relative h-12 w-auto">
+            <Image
+              src="http://res.cloudinary.com/dakf05m4x/image/upload/v1755172004/siteSetting/logo-e17294ba-9b7a-438d-9e5e-0154a1ca704d.png"
+              alt="TechCulture Solutions Logo"
+              height={25}
+              width={80}
+              className="object-contain"
+              priority
+            />
+          </div>
+        </Link>
 
-      {/* Desktop Ribbon Nav */}
-      <div
-        className={`
-          hidden lg:flex items-center justify-center relative
-          transition-all duration-700 ease-in-out
-          rounded-full px-6 py-3 glass-nav z-40 overflow-visible 
-          border border-white/20 dark:border-white/10 shadow-2xl
-          ${
-            scrolled
-              ? "backdrop-blur-xl bg-white/60 dark:bg-black/10"
-              : "backdrop-blur-md bg-white/60 dark:bg-black/5"
-          }
-        `}
-        style={{
-          width: collapsed ? "64px" : `${expandedWidth}px`,
-          transition: "width 0.6s ease-in-out",
-          minWidth: "64px",
-        }}
-      >
-        {/* Toggle Button - Centered when collapsed */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setCollapsed(!collapsed)}
-          className={`h-9 w-9 glass-card hover:glass-hover rounded-full z-50 transition-all duration-300 absolute ${
-            collapsed ? "opacity-100" : "opacity-100"
-          }`}
-          style={{
-            left: collapsed ? "50%" : "auto",
-            right: collapsed ? "auto" : "12px",
-            transform: collapsed ? "translateX(-50%)" : "none",
-          }}
-        >
-          {collapsed ? <Menu className="h-4 w-4" /> : <X className="h-4 w-4" />}
-        </Button>
-
-        {/* Navigation Content */}
-        <div
-          ref={navRef}
-          className={`flex items-center transition-all duration-500 ease-in-out gap-6 ${
-            collapsed
-              ? "opacity-0 translate-x-10 pointer-events-none"
-              : "opacity-100 translate-x-0"
-          }`}
-          style={{
-            whiteSpace: "nowrap",
-          }}
-        >
-          <div className="flex items-center space-x-6">
-            {navItems.map((item) =>
-              item.dropdown ? (
-                <div
-                  key={item.label}
-                  className="relative group"
-                  onMouseEnter={() => handleDropdownEnter(item.label)}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  <button
-                    className={`text-sm font-medium transition-all duration-300 hover:text-primary relative group flex items-center gap-1 ${
-                      item.dropdown.some((subItem) => pathname === subItem.href)
-                        ? "text-primary"
-                        : "text-foreground/80"
-                    }`}
-                  >
-                    {item.label}
-                    <ChevronDown
-                      className={`h-3 w-3 transition-transform duration-200 ${
-                        activeDropdown === item.label ? "rotate-180" : ""
-                      }`}
-                    />
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      item.dropdown.some((subItem) => pathname === subItem.href) ? "w-full" : "w-0 group-hover:w-full"
-                    }`}></span>
-                  </button>
-
-                  {/* Dropdown Menu */}
-                  {activeDropdown === item.label && (
-                    <div className="absolute top-full left-0 mt-2 w-48 glass-nav dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-600 py-2 z-[9999]">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.href}
-                          href={subItem.href}
-                          className={`block px-4 py-3 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary ${
-                            pathname === subItem.href
-                              ? "text-primary bg-gray-100 dark:bg-gray-700"
-                              : "text-gray-700 dark:text-gray-300"
-                          }`}
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-medium transition-all duration-300 hover:text-primary relative group ${
-                    pathname === item.href
-                      ? "text-primary"
-                      : "text-foreground/80"
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-8">
+          {navItems.map((item) =>
+            item.dropdown ? (
+              <div
+                key={item.label}
+                className="relative group"
+                onMouseEnter={() => handleDropdownEnter(item.label)}
+                onMouseLeave={handleDropdownLeave}
+              >
+                <button
+                  className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${
+                    item.dropdown.some((subItem) => pathname === subItem.href)
+                      ? "text-gray-900 dark:text-white border-b-2 border-emerald-600"
+                      : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                  }`}></span>
-                </Link>
-              )
-            )}
-          </div>
-          <ThemeToggle />
-        </div>
-      </div>
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${
+                      activeDropdown === item.label ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-      {/* Mobile Toggle */}
-      <div className="lg:hidden flex items-center space-x-4 z-50">
-        <ThemeToggle />
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsOpen(!isOpen)}
-          className="h-9 w-9 glass-card hover:glass-hover"
-        >
-          {isOpen ? (
-            <X className="h-4 w-4 transition-transform duration-300 rotate-90" />
-          ) : (
-            <Menu className="h-4 w-4" />
-          )}
-        </Button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden absolute top-full mt-4 left-0 right-0 px-10 pt-4 border-t border-white/20 dark:border-white/10 backdrop-blur bg-white/10 dark:bg-black/10 rounded-b-xl z-40 shadow-xl">
-          <div className="flex flex-col space-y-3 pb-4">
-            {navItems.map((item) =>
-              item.dropdown ? (
-                <div key={item.label} className="space-y-2">
-                  <span className="text-sm font-medium text-foreground/60">
-                    {item.label}
-                  </span>
-                  <div className="pl-4 space-y-2">
+                {/* Dropdown Menu */}
+                {activeDropdown === item.label && (
+                  <div className="absolute left-0 mt-0 w-48 bg-white dark:bg-slate-900 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-2 z-[9999]">
                     {item.dropdown.map((subItem) => (
                       <Link
                         key={subItem.href}
                         href={subItem.href}
-                        className={`block text-sm font-medium transition-colors hover:text-primary ${
+                        className={`block px-4 py-3 text-sm font-medium transition-colors ${
                           pathname === subItem.href
-                            ? "text-primary"
-                            : "text-foreground/80"
+                            ? "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20"
+                            : "text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-gray-50 dark:hover:bg-gray-800"
                         }`}
-                        onClick={() => setIsOpen(false)}
                       >
                         {subItem.label}
                       </Link>
                     ))}
                   </div>
-                </div>
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === item.href
-                      ? "text-primary"
-                      : "text-foreground/80"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              )
+                )}
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm font-medium transition-colors duration-300 ${
+                  pathname === item.href
+                    ? "text-gray-900 dark:text-white border-b-2 border-emerald-600"
+                    : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
+        </div>
+
+        {/* Right side icons */}
+        <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          {/* Get In Touch Button - Desktop */}
+          <Link href="/contact" className="hidden lg:block">
+            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors">
+              Get In Touch
+            </Button>
+          </Link>
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden h-9 w-9"
+          >
+            {isOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
             )}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Menu - Slide from Left */}
+      <div className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        />
+        
+        {/* Mobile Menu Panel */}
+        <div className={`absolute left-0 top-0 h-full w-80 max-w-[85vw] bg-white dark:bg-slate-950 shadow-2xl transform transition-transform duration-300 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          {/* Header */}
+          <div className="flex items-center justify-end p-6 border-b border-gray-200 dark:border-gray-800">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(false)}
+              className="h-9 w-9 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              <X className="h-5 w-5" />
+            </Button>
+          </div>
+          
+          {/* Navigation Items */}
+          <div className="px-6 py-4 overflow-y-auto h-[calc(100vh-180px)]">
+            <nav className="space-y-2">
+              {navItems.map((item, index) => 
+                item.dropdown ? (
+                  <div key={item.label} className="space-y-2">
+                    <div
+                      className="flex items-center justify-between px-4 py-3 text-base font-medium text-gray-900 dark:text-white cursor-pointer hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-xl transition-all duration-200 group"
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === item.label ? null : item.label
+                        )
+                      }
+                    >
+                      <span className="group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{item.label}</span>
+                      <ChevronDown
+                        className={`h-5 w-5 transition-all duration-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 ${
+                          activeDropdown === item.label ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                    <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === item.label ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="pl-4 space-y-1 pb-2">
+                        {item.dropdown?.map((subItem) => (
+                          <Link
+                            key={subItem.href}
+                            href={subItem.href}
+                            className={`block px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                              pathname === subItem.href
+                                ? "text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 border-l-3 border-emerald-600"
+                                : "text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:translate-x-1"
+                            }`}
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-200 group ${
+                      pathname === item.href
+                        ? "text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/30 border-l-4 border-emerald-600"
+                        : "text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:translate-x-2"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="transition-transform duration-200">{item.label}</span>
+                  </Link>
+                )
+              )}
+            </nav>
+          </div>
+          
+          {/* Footer */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-slate-900">
+            <Link href="/contact" onClick={() => setIsOpen(false)}>
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 hover:scale-105 shadow-lg">
+                Get In Touch
+              </Button>
+            </Link>
+            <div className="mt-4 flex justify-center">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

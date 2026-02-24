@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function MediaPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
+    <div className="min-h-screen pt-20 sm:pt-22 md:pt-24 pb-12 sm:pb-14 md:pb-16">
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div

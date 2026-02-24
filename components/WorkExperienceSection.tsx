@@ -35,28 +35,29 @@ const projectionConfig = {
 
 const WorkExperienceSection = () => {
   return (
-    <section className="py-24 px-4  relative overflow-hidden earthBg">
+    <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/5 rounded-full filter blur-3xl -z-10"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <AnimatedSection>
           <div className="text-center mb-16">
-            <Badge
-              variant="secondary"
-              className="mb-4 px-3 py-1 text-xs font-medium bg-indigo-100 text-indigo-800 "
-            >
-              Our Presence
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Serving Clients{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Across India
-              </span>
+            {/* Badge */}
+            <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">📍 OUR PRESENCE</span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              Pan-India <span className="text-emerald-600 dark:text-emerald-400">Services</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We've successfully delivered projects and solutions across
-              multiple states, building a strong network of satisfied clients
-              throughout the country.
+
+            {/* Enhanced Description */}
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              We've successfully delivered <span className="font-semibold text-emerald-600 dark:text-emerald-400">500+ projects</span> and cutting-edge solutions across <span className="font-semibold text-emerald-600 dark:text-emerald-400">multiple states</span>, building a strong network of satisfied clients throughout the country.
             </p>
           </div>
         </AnimatedSection>
@@ -65,8 +66,8 @@ const WorkExperienceSection = () => {
           {/* Left side: Interactive Map */}
           <AnimatedSection animation="fadeInLeft">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-3xl filter blur-xl transform rotate-1"></div>
-              <div className="relative p-6 rounded-3xl bg-white/20 shadow-2xl border border-white/20 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-3xl filter blur-3xl transform rotate-1"></div>
+              <div className="relative p-8 rounded-3xl bg-white/40 dark:bg-slate-800/40 shadow-2xl border border-emerald-200/30 dark:border-emerald-800/30 backdrop-blur-md hover:shadow-3xl transition-all duration-500">
                 <ComposableMap
                   projection="geoMercator"
                   projectionConfig={projectionConfig}
@@ -87,18 +88,19 @@ const WorkExperienceSection = () => {
                           <Geography
                             key={geo.rsmKey}
                             geography={geo}
-                            fill={isHighlighted ? "#4f46e5" : "#e2e8f0"}
+                            fill={isHighlighted ? "#0d9488" : "#e0f2fe"}
                             stroke="#ffffff"
-                            strokeWidth={0.5}
+                            strokeWidth={0.75}
                             style={{
                               default: {
                                 outline: "none",
-                                transition: "all 0.3s",
+                                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                               },
                               hover: {
-                                fill: isHighlighted ? "#3730a3" : "#cbd5e1",
+                                fill: isHighlighted ? "#0f766e" : "#bae6fd",
                                 outline: "none",
                                 cursor: "pointer",
+                                filter: "drop-shadow(0 4px 12px rgba(16, 185, 129, 0.2))",
                               },
                               pressed: { outline: "none" },
                             }}
@@ -137,31 +139,27 @@ const WorkExperienceSection = () => {
 
           {/* Right side: State list with enhanced styling */}
           <AnimatedSection animation="fadeInRight">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white mb-8">
-                Our Project Locations
-              </h3>
+            <div className="space-y-8"> 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {stateData.map((state) => (
                   <div
                     key={state.id}
-                    className="group relative p-4 rounded-xl bg-white/20 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:border-indigo-500 dark:hover:border-indigo-500"
+                    className="group relative p-5 rounded-2xl bg-gradient-to-br from-white/60 to-emerald-50/40 dark:from-gray-800/60 dark:to-teal-900/20 hover:from-white hover:to-emerald-100/60 dark:hover:from-gray-700/80 dark:hover:to-teal-900/40 shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-200/50 dark:border-teal-800/30 hover:border-emerald-400/70 dark:hover:border-emerald-600/50 overflow-hidden"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900 group-hover:bg-indigo-500 transition-colors">
-                        <MapPin className="w-5 h-5 text-indigo-600 dark:text-indigo-400 group-hover:text-white" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 to-teal-500/0 group-hover:from-emerald-500/5 group-hover:to-teal-500/5 transition-all duration-300"></div>
+                    <div className="relative flex items-center space-x-4">
+                      <div className="p-3 rounded-xl bg-gradient-to-br from-emerald-100/80 to-teal-100/80 dark:from-emerald-900/40 dark:to-teal-900/40 group-hover:from-emerald-500 group-hover:to-teal-500 transition-all duration-300 shadow-md group-hover:shadow-lg">
+                        <MapPin className="w-6 h-6 text-emerald-600 dark:text-emerald-300 group-hover:text-white transition-colors" />
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-white group-hover:text-indigo-500 transition-colors">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors text-lg">
                           {state.name}
                         </h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-emerald-600/70 dark:group-hover:text-emerald-400/70 transition-colors">
                           Active Projects
                         </p>
                       </div>
                     </div>
-                    {/* Accent line */}
-                    {/* <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-500 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div> */}
                   </div>
                 ))}
               </div>

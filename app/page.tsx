@@ -7,40 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/animated-section";
-import { ParallaxSection } from "@/components/parallax-section";
 import {
   ArrowRight,
   CheckCircle,
-  Code,
-  Database,
   Globe,
-  HardDrive,
   ChevronLeft,
   ChevronRight,
-  Star,
-  Users,
-  TrendingUp,
   Shield,
-  Zap,
-  Award,
-  Target,
   Clock,
   Layers,
   Building2,
   Network,
-  MapPin,
-  Cpu,
-  Smartphone,
-  BarChart3,
-  Lightbulb,
-  Rocket,
-  Sparkles,
   X,
-  Building,
-  Satellite,
 } from "lucide-react";
 import { TestimonialsColumn } from "@/components/testimonials-columns-1";
 import { Marquee } from "@/components/marquee";
+import { TypewriterServices } from "@/components/typewriter-services";
 import WorkExperienceSection from "@/components/WorkExperienceSection";
 import { useSite } from "@/context/siteContext";
 import axios from "axios";
@@ -56,13 +38,14 @@ interface Service {
 }
 
 export default function HomePage() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [showCookieConsent, setShowCookieConsent] = useState(true);
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [currentServiceSlide, setCurrentServiceSlide] = useState(0);
+  const [currentProjectSlide, setCurrentProjectSlide] = useState(0);
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL;
   const [slicedServiceData, setSlicedServiceData] = useState<Service[]>([]);
   const [slicedProjectData, setSlicedProjectData] = useState([]);
-  const [enquiryForm, setEnquiryFrom] = useState({
+  const [enquiryForm, setEnquiryForm] = useState({
     name: "",
     email: "",
     phone: "",
@@ -111,7 +94,7 @@ export default function HomePage() {
       }
 
       if (projectData) {
-        const slicedData = projectData.slice(0, 4);
+        const slicedData = projectData.slice(0, 9);
         console.log("project sliced data", slicedData);
         setSlicedProjectData(slicedData);
       }
@@ -210,7 +193,7 @@ export default function HomePage() {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setEnquiryFrom({
+    setEnquiryForm({
       ...enquiryForm,
       [e.target.name]: e.target.value,
     });
@@ -257,7 +240,7 @@ export default function HomePage() {
         toast.success(
           "Enquiry submitted successfully! We'll get back to you soon."
         );
-        setEnquiryFrom({
+        setEnquiryForm({
           name: "",
           email: "",
           phone: "",
@@ -288,415 +271,433 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen ">
-      {/* Modern Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <video
-            className="-z-50 w-full h-full object-cover"
-            src="/earthv2.mp4"
-            autoPlay
-            loop
-            muted
-          ></video>
-          {/* Enhanced overlay for better text contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/35"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Clean & Minimal Hero Section */}
+      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-emerald-50/30 to-white dark:from-slate-950 dark:via-emerald-950/20 dark:to-slate-950">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 mt-16">
           <AnimatedSection animation="fadeInUp" delay={0}>
-            <h1 className="mb-8 sm:mb-10 leading-[0.9] tracking-tight">
-              <span
-                className="block font-black text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-2"
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  textShadow:
-                    "3px 3px 12px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 0.5)",
-                  letterSpacing: "-0.04em",
-                }}
-              >
-                TRANSFORMING
-              </span>
-              <span
-                className="block font-black text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-2"
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  textShadow:
-                    "3px 3px 12px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(0, 0, 0, 1), 0px 0px 20px rgba(0, 0, 0, 0.5)",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                INFRASTRUCTURE
-              </span>
-              <span className="block bg-gradient-to-b from-white  to-gray-800 bg-clip-text text-transparent text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                THROUGH TECHNOLOGY
-              </span>
+            {/* Minimal badge */}
+            <div className="inline-block mb-6 px-4 py-2 rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20">
+              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Geospatial Innovation</span>
+            </div>
+
+            {/* Clean heading */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight">
+              Advanced Geospatial Solutions
             </h1>
 
-            {/* Accent line */}
-            <div
-              className="mx-auto mb-6 sm:mb-8 h-1 bg-gradient-to-r from-transparent via-white/60 to-transparent"
-              style={{
-                width: "150px",
-              }}
-            ></div>
-
-            {/* Subtitle */}
-            <div
-              className="text-xs sm:text-sm md:text-base text-white/70 font-mono tracking-[0.2em] uppercase font-bold"
-              style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                textShadow: "1px 1px 4px rgba(0, 0, 0, 0.7)",
-              }}
-            >
-              PRECISION • INNOVATION • TRANSFORMATION
+            {/* Animated Services Typewriter */}
+            <div className="h-20 sm:h-24 flex items-center justify-center mb-10">
+              <TypewriterServices services={[
+                "GIS Platform Development",
+                "3D Geospatial Modelling",
+                "Urban Planning & Development",
+                "Network Asset Management for Utilities",
+                "Customized GIS App Development",
+                "Data Conversion & Geoprocessing"
+              ]} />
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      {/* about us section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 imageBgLeft">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-10 items-center">
-            {/* Image Section */}
-            <AnimatedSection animation="fadeInLeft">
-              <div className="relative flex ">
-                <Image
-                  src="/about2.png"
-                  alt="TechCulture Solutions Team"
-                  width={500} // Increased from 350
-                  height={350}
-                  className="rounded-lg w-full h-auto max-w-md sm:max-w-lg object-cover shadow-2xl border border-white/20 backdrop-blur-sm"
-                />
-              </div>
-            </AnimatedSection>
+            {/* Clean subheading */}
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Enterprise-grade spatial technology powering smarter decisions for governments and global organizations.
+            </p>
 
-            {/* Text Section */}
-            <AnimatedSection animation="fadeInRight">
-              <div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
-                  We believe in the transformative power of{" "}
-                  <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">
-                    geospatial intelligence
-                  </span>
-                </h2>
-
-                <p className="text-base sm:text-lg lg:text-gray-600 text-gray-800 mb-6 sm:mb-8 leading-relaxed">
-                  We are a leading geospatial technology company specializing in
-                  GIS, Remote Sensing, and Surveying Services. We deliver
-                  innovative spatial solutions that help clients transform
-                  location-based data into actionable insights.
-                </p>
-
-                <p className="text-base sm:text-lg lg:text-gray-600 text-gray-800 mb-6 sm:mb-8 leading-relaxed">
-                  Established with the vision to bring precision and
-                  intelligence to spatial decision-making, we have successfully
-                  delivered projects across government, infrastructure,
-                  utilities, and environmental sectors. Our team is driven by
-                  domain expertise, innovation, and a commitment to quality.
-                </p>
-
-                <Button
-                  variant="default"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg font-semibold rounded-full"
-                  asChild
-                >
-                  <Link href="/about">
-                    Learn More About Us <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Revolutionary Services Section - Redesigned */}
-      <section className="py-32 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden earthBg2">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/30 rounded-full filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full filter blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <AnimatedSection>
-            <div className="text-center mb-24">
-              {/* Enhanced Badge */}
-              <div className="inline-flex items-center gap-3 mb-8 px-6 py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-full border border-white/10">
-                <div className="relative">
-                  <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full animate-ping"></div>
-                </div>
-                <span className="text-white font-semibold tracking-wide uppercase text-sm">
-                  Revolutionary Services
-                </span>
-              </div>
-
-              {/* Massive Title */}
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[0.85]" >
-                <span className="block mb-4">NEXT-GEN</span>
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  GEOSPATIAL
-                </span>
-                <span className="text-4xl md:text-5xl lg:text-6xl font-medium text-white block mt-4">
-                  SOLUTIONS
-                </span>
-              </h2>
-
-              <p
-                className="text-2xl md:text-3xl text-gray-300 leading-relaxed mb-12 max-w-5xl mx-auto font-light"
-                style={{
-                  textShadow: "2px 2px 4px #000, 0 0 5px #000",
-                }}
-              >
-                Transforming industries with cutting-edge spatial intelligence,
-                advanced analytics, and revolutionary mapping technologies that
-                redefine what's possible.
-              </p>
-
-              
-            </div>
-          </AnimatedSection>
-
-          {/* Large Service Cards Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-            {serviceData &&
-              slicedServiceData.map((service, index) => (
-                <AnimatedSection
-                  key={index}
-                  delay={index * 200}
-                  animation="fadeInUp"
-                >
-                  <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-700 hover:shadow-2xl hover:shadow-cyan-500/20 h-[400px] md:h-[500px]">
-                    {/* Background Image */}
-                    <div
-                      className="absolute inset-0 bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-700"
-                      style={{
-                        backgroundImage: `url(${
-                          service.image || "/contact-banner.png"
-                        })`,
-                      }}
-                    ></div>
-
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-transparent md:from-black/60 md:via-black/40"></div>
-
-                    {/* Floating Icon */}
-                    <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10">
-                      <div
-                        className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-r ${servicesIcon[index].color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-2xl`}
-                      >
-                        <span className="text-white text-lg md:text-xl">
-                          {servicesIcon[index].icon}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Service Number */}
-                    <div className="absolute top-6 right-6 md:top-8 md:right-8 z-10">
-                      <div className="text-4xl md:text-6xl font-black text-white/10 group-hover:text-white/20 transition-colors duration-500">
-                        0{index + 1}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="relative h-full p-6 md:p-8 flex flex-col justify-end z-10">
-                      {/* Mobile spacing to avoid icon overlap */}
-                      <div className="mb-20 md:mb-0"></div>
-                      <div className="space-y-4 md:space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-500 leading-tight">
-                          {service.title}
-                        </h3>
-
-                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
-                          {service.description}
-                        </p>
-
-                        {/* Enhanced Features */}
-                        <div className="space-y-2 md:space-y-3">
-                          {service.features?.slice(0, 3).map((feature, idx) => (
-                            <div
-                              key={idx}
-                              className="flex items-center text-gray-300 group-hover:text-white transition-colors duration-500"
-                            >
-                              <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mr-3 md:mr-4 flex-shrink-0"></div>
-                              <span className="text-xs md:text-sm font-medium">
-                                {feature}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Action Button */}
-                        <div className="pt-3 md:pt-4">
-                          <Button
-                            variant="outline"
-                            className="bg-white/10 border-white/20 backdrop-blur-xl text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 rounded-xl px-4 md:px-6 py-2 md:py-3 text-sm md:text-base font-semibold"
-                            asChild
-                          >
-                            <Link href="/services">
-                              Discover More
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                            </Link>
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Hover Effect Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-700"></div>
-                  </div>
-                </AnimatedSection>
-              ))}
-          </div>
-
-          {/* Enhanced CTA */}
-          <AnimatedSection animation="fadeInUp" className="text-center">
-            <div className="relative inline-block">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-
+            {/* Clean CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
-                variant="default"
-                className="relative bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:via-blue-500 hover:to-purple-500 text-white px-12 py-6 text-xl font-bold rounded-3xl shadow-2xl hover:shadow-cyan-500/25 transform hover:-translate-y-2 hover:scale-105 transition-all duration-500 border-2 border-white/20"
+                className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
                 asChild
               >
-                <Link href="/services" className="group">
-                  <span className="relative z-10 flex items-center">
-                    Explore All Services
-                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform duration-300" />
-                  </span>
-                </Link>
+                <Link href="#services">Explore Services</Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="px-8 py-3 border border-gray-300 dark:border-gray-600 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900"
+                asChild
+              >
+                <Link href="/contact">Schedule Demo</Link>
               </Button>
             </div>
+          </AnimatedSection>
+        </div>
 
-            <p className="text-gray-400 mt-6 text-lg">
-              Ready to transform your business? Let's build the future together.
-            </p>
+        {/* Subtle gradient overlay - minimal */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/20 dark:to-slate-950/20 pointer-events-none"></div>
+      </section>
+
+      {/* Clean & Minimal About Section */}
+      <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-blue-50/40 dark:from-slate-950 dark:to-blue-950/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Image Section - Minimal */}
+            <AnimatedSection animation="fadeInLeft" delay={0}>
+              <div className="relative">
+                <Image
+                  src="/about2.png"
+                  alt="TechCulture Solutions"
+                  width={500}
+                  height={400}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-500/10 rounded-lg -z-10"></div>
+              </div>
+            </AnimatedSection>
+
+            {/* Text Section - Clean */}
+            <AnimatedSection animation="fadeInRight" delay={100}>
+              <div className="space-y-8">
+                {/* Section label */}
+                <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700">
+                  <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">About Us</span>
+                </div>
+
+                {/* Heading */}
+                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+                  Why Choose
+                  <span className="block text-emerald-600 dark:text-emerald-400">TechCulture Solutions?</span>
+                </h2>
+
+                {/* Description */}
+                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  With over 15 years of expertise in geospatial technology, we deliver enterprise-grade solutions that transform data into actionable intelligence for governments and global organizations.
+                </p>
+
+                {/* Simple bullet points */}
+                <div className="space-y-4">
+                  {[
+                    { title: "500+ Successful Projects", desc: "Across 50+ countries worldwide" },
+                    { title: "50+ Expert Professionals", desc: "PhD-level specialists with deep domain expertise" },
+                    { title: "ISO 9001:2015 Certified", desc: "Guaranteed quality and compliance standards" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <div className="flex-shrink-0">
+                        <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-1" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 dark:text-white">{item.title}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Single CTA */}
+                <div className="pt-6">
+                  <Button
+                    className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+                    asChild
+                  >
+                    <Link href="/about">
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Clean Services Section */}
+      <section id="services" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-50 via-emerald-50/40 to-gray-50 dark:from-slate-900 dark:via-emerald-950/30 dark:to-slate-900 overflow-hidden">
+        <div className="relative max-w-6xl mx-auto">
+          {/* Section Header */}
+          <AnimatedSection animation="fadeInUp">
+            <div className="text-center mb-8 relative z-10">
+              <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+                <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">Our Services</span>
+              </div>
+              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                Comprehensive Geospatial <span className="text-emerald-600 dark:text-emerald-400">Services</span>
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Enterprise solutions designed to meet your organization's spatial data and intelligence needs.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          {/* Services Slider */}
+          <div className="relative mb-12">
+            {/* Slider Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{
+                  transform: `translateX(-${(currentServiceSlide * 100) / 3}%)`,
+                }}
+              >
+                {serviceData &&
+                  slicedServiceData.map((service, index) => {
+                    const backgroundImages = [
+                      "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><defs><linearGradient id=%22g1%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(16,185,129,0.1);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgba(16,185,129,0.05);stop-opacity:1%22 /></linearGradient></defs><rect width=%22400%22 height=%22400%22 fill=%22url(%23g1)%22/><circle cx=%22100%22 cy=%2250%22 r=%2260%22 fill=%22rgba(16,185,129,0.08)%22/><circle cx=%22350%22 cy=%22350%22 r=%2280%22 fill=%22rgba(16,185,129,0.06)%22/></svg>')",
+                      "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><defs><linearGradient id=%22g2%22 x1=%22100%25%22 y1=%220%25%22 x2=%220%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(16,185,129,0.1);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgba(16,185,129,0.05);stop-opacity:1%22 /></linearGradient></defs><rect width=%22400%22 height=%22400%22 fill=%22url(%23g2)%22/><path d=%22M50,200 Q100,100 200,150 T350,200%22 stroke=%22rgba(16,185,129,0.1)%22 stroke-width=%224%22 fill=%22none%22/></svg>')",
+                      "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><defs><linearGradient id=%22g3%22 x1=%2250%25%22 y1=%2250%25%22 r=%2260%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(16,185,129,0.08);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgba(16,185,129,0.02);stop-opacity:1%22 /></linearGradient></defs><rect width=%22400%22 height=%22400%22 fill=%22url(%23g3)%22/><polygon points=%22200,50 350,200 200,350 50,200%22 fill=%22none%22 stroke=%22rgba(16,185,129,0.1)%22 stroke-width=%223%22/></svg>')",
+                      "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22><defs><linearGradient id=%22g4%22 x1=%220%25%22 y1=%22100%25%22 x2=%22100%25%22 y2=%220%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(16,185,129,0.1);stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:rgba(16,185,129,0.05);stop-opacity:1%22 /></linearGradient></defs><rect width=%22400%22 height=%22400%22 fill=%22url(%23g4)%22/><circle cx=%22200%22 cy=%22200%22 r=%22100%22 fill=%22none%22 stroke=%22rgba(16,185,129,0.1)%22 stroke-width=%222%22/><circle cx=%22200%22 cy=%22200%22 r=%2250%22 fill=%22none%22 stroke=%22rgba(16,185,129,0.08)%22 stroke-width=%222%22/></svg>')",
+                    ];
+
+                    return (
+                      <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-4">
+                        <div 
+                          className="group relative h-full rounded-xl border border-emerald-200/50 dark:border-emerald-800/50 bg-white dark:bg-slate-800 overflow-hidden hover:shadow-2xl hover:border-emerald-300 dark:hover:border-emerald-700 transition-all duration-500"
+                        >
+                          {/* Background Pattern */}
+                          <div 
+                            className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+                            style={{
+                              backgroundImage: backgroundImages[index],
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                            }}
+                          ></div>
+
+                          {/* Gradient overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/90 to-white/80 dark:from-slate-800/90 dark:via-slate-800/95 dark:to-slate-800/90"></div>
+
+                          {/* Content */}
+                          <div className="relative z-10 p-8 h-full flex flex-col min-h-[450px]">
+                            {/* Icon and number */}
+                            <div className="flex items-start justify-between mb-6">
+                              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-900/20 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                                {servicesIcon[index]?.icon && (
+                                  <div className="text-emerald-600 dark:text-emerald-300 text-2xl">
+                                    {servicesIcon[index].icon}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="flex flex-col items-end">
+                                <span className="text-4xl font-black bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">
+                                  {String(index + 1).padStart(2, "0")}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Title */}
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+                              {service.title}
+                            </h3>
+
+                            {/* Description */}
+                            <p className="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed text-sm flex-grow">
+                              {service.description}
+                            </p>
+
+                            {/* Features */}
+                            {service.features && service.features.length > 0 && (
+                              <ul className="space-y-2 mb-6">
+                                {service.features.slice(0, 3).map((feature, idx) => (
+                                  <li key={idx} className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+                                    <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                                    <span>{feature}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+
+                            {/* Hover CTA */}
+                            <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pt-4 border-t border-gray-200 dark:border-gray-700">
+                              <span>Learn More</span>
+                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </div>
+                          </div>
+
+                          {/* Top border accent */}
+                          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-emerald-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={() => setCurrentServiceSlide((prev) => (prev - 1 + slicedServiceData.length) % slicedServiceData.length)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 md:translate-x-0 z-20 p-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
+            <button
+              onClick={() => setCurrentServiceSlide((prev) => (prev + 1) % slicedServiceData.length)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 md:translate-x-0 z-20 p-3 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {slicedServiceData.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentServiceSlide(index)}
+                  className={`h-3 rounded-full transition-all ${
+                    index === currentServiceSlide
+                      ? "bg-emerald-600 w-8"
+                      : "bg-gray-300 dark:bg-gray-600 w-3 hover:bg-emerald-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <AnimatedSection animation="fadeInUp" className="text-center relative z-10">
+            <Button
+              className="px-10 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+              asChild
+            >
+              <Link href="/services">
+                Explore All Services
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Modern Success Stories Section - Redesigned */}
-      <section className="py-24 px-4 bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950/30 imageBgRight">
+      {/* Clean Projects Section */}
+      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-slate-50 dark:from-slate-950 dark:to-slate-900 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
+          <AnimatedSection animation="fadeInUp">
             <div className="text-center mb-20">
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-gradient-to-r from-emerald-100 to-green-100 dark:from-emerald-900/30 dark:to-green-900/30 rounded-full">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-semibold text-green-800 dark:text-green-300 tracking-wide uppercase">
-                  Success Stories
-                </span>
+              <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+                <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">✨ Success Stories</span>
               </div>
-
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-8 leading-[0.9]">
-                <span className="block mb-2">
-                  Real{" "}
-                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    Projects
-                  </span>
-                </span>
-                
+              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                Featured <span className="text-emerald-600 dark:text-emerald-400">Projects</span>
               </h2>
-
-              <div className="max-w-4xl mx-auto">
-                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-                  From smart cities to precision agriculture, explore our
-                  portfolio of groundbreaking projects that showcase the power
-                  of geospatial technology in action.
-                </p>
-
-              </div>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Transforming data into actionable intelligence across diverse industries
+              </p>
             </div>
           </AnimatedSection>
 
-          {/* Uniform Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {projectData &&
-              slicedProjectData.map((project: any, index: number) => (
-                <AnimatedSection key={project._id} delay={index * 150}>
-                  <div className="group h-full">
-                    <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-gray-900 shadow-xl hover:shadow-2xl transition-all duration-700 border border-gray-200/50 dark:border-gray-700/50 h-full flex flex-col">
-                      {/* Image Container with Consistent Height */}
-                      <div className="relative overflow-hidden h-64 flex-shrink-0">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-
-                        {/* Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-
-                        {/* Floating Category Tag */}
-                        <div className="absolute top-4 left-4 z-10">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-black/90 text-gray-900 dark:text-white backdrop-blur-sm">
-                            {project.category || "Geospatial"}
-                          </span>
-                        </div>
-
-                        {/* Project Number Badge */}
-                        <div className="absolute top-4 right-4 z-10">
-                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                            {(index + 1).toString().padStart(2, "0")}
+          {/* Projects Slider */}
+          <div className="relative mb-16">
+            {/* Slider Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{
+                  transform: `translateX(-${slicedProjectData.length > 0 ? (currentProjectSlide * 100) / 3 : 0}%)`,
+                }}
+              >
+                {slicedProjectData && slicedProjectData.length > 0 &&
+                  slicedProjectData.map((project: any, index: number) => (
+                    <div key={project._id} className="w-full md:w-1/3 flex-shrink-0 px-3">
+                      <div className="group relative h-full rounded-2xl overflow-hidden bg-white dark:bg-slate-800/80 backdrop-blur border border-gray-200/60 dark:border-slate-700/60 hover:border-blue-400/80 dark:hover:border-blue-600/80 shadow-lg hover:shadow-2xl transition-all duration-500">
+                        {/* Image Container with enhanced overlay */}
+                        <div className="relative h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                          <Image
+                            src={project.image}
+                            alt={project.title}
+                            fill
+                            className="object-cover group-hover:scale-125 transition-transform duration-700"
+                          />
+                          
+                          {/* Advanced gradient overlay on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                          
+                          {/* Category badge - Enhanced */}
+                          <div className="absolute top-4 right-4 z-20">
+                            <span className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-xs font-bold text-white shadow-lg backdrop-blur-sm">
+                              {project.category || "Project"}
+                            </span>
                           </div>
-                        </div>
-                      </div>
 
-                      {/* Content Section */}
-                      <div className="p-6 flex-1 flex flex-col">
-                        <div className="flex items-start justify-between mb-4">
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                            {project.title}
-                          </h3>
-                        </div>
-
-                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
-                          {project.description}
-                        </p>
-
-                        {/* Tags */}
-                        {project.technologies && (
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies
-                              .slice(0, 3)
-                              .map((tech: string, techIndex: number) => (
-                                <span
-                                  key={techIndex}
-                                  className="px-2 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-lg font-medium"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                          </div>
-                        )}
-
-                        {/* Status Bar - Always at bottom */}
-                        <div className="flex items-center justify-center pt-4 border-t border-gray-200/50 dark:border-gray-700/50 mt-auto">
-                          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                          {/* Status indicator - Enhanced */}
+                          <div className="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 backdrop-blur-md text-white text-xs font-semibold shadow-lg z-20">
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                             <span>Completed</span>
                           </div>
                         </div>
+
+                        {/* Content - Redesigned */}
+                        <div className="p-8 space-y-4">
+                          {/* Title */}
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                            {project.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 text-sm">
+                            {project.description}
+                          </p>
+
+                          {/* Tech tags - Redesigned */}
+                          {project.technologies && project.technologies.length > 0 && (
+                            <div className="flex flex-wrap gap-2 pt-2">
+                              {project.technologies.slice(0, 3).map((tech: string, idx: number) => (
+                                <span key={idx} className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-700 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-700/50 hover:border-blue-400 dark:hover:border-blue-600 transition-colors">
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Divider */}
+                          <div className="h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent my-4"></div>
+
+                          {/* View button - Enhanced */}
+                          <div className="flex items-center justify-between gap-2 text-blue-600 dark:text-blue-400 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pt-2">
+                            <span className="group-hover:translate-x-1 transition-transform duration-300">View Case Study</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
+                        </div>
+
+                        {/* Top border accent - Enhanced */}
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </div>
                     </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  ))}
+              </div>
+            </div>
+
+            {/* Navigation Arrows - Redesigned */}
+            {slicedProjectData.length > 0 && (
+              <>
+                <button
+                  onClick={() => setCurrentProjectSlide((prev) => (prev - 1 + slicedProjectData.length) % slicedProjectData.length)}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 md:translate-x-0 z-20 p-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all shadow-lg hover:shadow-xl"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <button
+                  onClick={() => setCurrentProjectSlide((prev) => (prev + 1) % slicedProjectData.length)}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 md:translate-x-0 z-20 p-3 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all shadow-lg hover:shadow-xl"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Dots Indicator - Redesigned */}
+                <div className="flex justify-center gap-3 mt-12">
+                  {slicedProjectData.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentProjectSlide(index)}
+                      className={`h-3 rounded-full transition-all ${
+                        index === currentProjectSlide
+                          ? "bg-gradient-to-r from-blue-600 to-indigo-600 w-8 shadow-md"
+                          : "bg-gray-300 dark:bg-gray-600 w-3 hover:bg-blue-400 dark:hover:bg-blue-500"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
-          <AnimatedSection animation="fadeInUp" className="mt-16 text-center">
+          {/* View all CTA */}
+          <AnimatedSection animation="fadeInUp" className="text-center">
             <Button
-              variant="default"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              className="px-12 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-3"
               asChild
             >
               <Link href="/projects">
-                View All Projects <ArrowRight className="w-5 h-5 ml-2" />
+                View All Projects
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>
           </AnimatedSection>
@@ -706,26 +707,28 @@ export default function HomePage() {
       <WorkExperienceSection />
 
       {/* Modern Testimonials Section */}
-      <section className="py-24 px-4 bg-white">
+      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-indigo-50/20 dark:from-slate-950 dark:to-indigo-950/20">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-200/5 dark:bg-indigo-900/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200/5 dark:bg-blue-900/10 rounded-full blur-3xl -z-10"></div>
+
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <Badge
-                variant="secondary"
-                className="mb-4 px-3 py-1 text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
-              >
-                Client Testimonials
-              </Badge>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                What Our{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  Clients Say
-                </span>
+          <AnimatedSection animation="fadeInUp">
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+                <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">⭐ Client Testimonials</span>
+              </div>
+              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                What Our <span className="text-emerald-600 dark:text-emerald-400">Clients Say</span>
               </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Discover how organizations worldwide leverage TechCulture Solutions to transform their geospatial data into strategic competitive advantages
+              </p>
             </div>
           </AnimatedSection>
 
-          <div className="flex justify-center gap-6 w-full">
+          {/* Testimonials Grid */}
+          <div className="flex justify-center gap-6 w-full mb-16">
             <TestimonialsColumn testimonials={firstColumn} duration={15} />
             <TestimonialsColumn
               testimonials={secondColumn}
@@ -738,24 +741,37 @@ export default function HomePage() {
               duration={17}
             />
           </div>
+
+          {/* Stats Section */}
+           
+
+          {/* Bottom CTA */}
+          <AnimatedSection animation="fadeInUp" className="text-center">
+            <p className="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+              Ready to join leading organizations transforming their operations?
+            </p>
+            <Button
+              className="px-12 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
+              asChild
+            >
+              <Link href="/contact">
+                Get Started Today
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+          </AnimatedSection>
         </div>
       </section>
       {/* Technology Partners Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50 ">
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
-            <div className="text-center mb-14">
-              <Badge
-                variant="secondary"
-                className="mb-4 px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-              >
-                Technology Partners
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Trusted by Leading{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Technology Providers
-                </span>
+            <div className="text-center mb-20">
+              <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+                <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">🤝 Strategic Partnerships</span>
+              </div>
+              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                Trusted by Leading <span className="text-emerald-600 dark:text-emerald-400">Technology Providers</span>
               </h2>
               <p className="text-md md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 We collaborate with the world’s top technology companies to
@@ -765,7 +781,6 @@ export default function HomePage() {
             </div>
           </AnimatedSection>
 
-          {/* <LogoCarousel columnCount={5} logos={partners} /> */}
           {settingsData && (
             <Marquee>
               {settingsData.clients.map((Logo: string, index: number) => (
@@ -790,245 +805,156 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modern Contact Form Section */}
-
-      <section className="py-12 px-4 relative overflow-hidden min-h-screen imageBgLeft">
-        {/* Enhanced background with gradients */}
-        <div className="absolute inset-0 bg-gradient-to-br  "></div>
-
-        <div className="max-w-7xl mx-auto relative z-10 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center  h-full">
-            {/* Left side with enhanced content */}
-            <AnimatedSection animation="fadeInLeft" className="h-full">
-              <div className="relative h-full">
-
-                <div className="relative z-10 mb-8">
-                  {/* Tech-inspired subtitle */}
-                  <div
-                    className="text-sm font-mono tracking-[0.2em] uppercase text-blue-600/80 dark:text-blue-400/80 mb-4"
-                    style={{
-                      fontFamily: "'JetBrains Mono', monospace",
-                    }}
-                  >
-                    GET IN TOUCH
+      {/* Clean Contact Section */}
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-emerald-50/30 dark:from-slate-900 dark:to-emerald-950/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left side - Content */}
+            <AnimatedSection animation="fadeInLeft">
+              <div className="space-y-8">
+                <div>
+                  <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
+                    <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">💬 Contact Us</span>
                   </div>
-
-                  <h2
-                    className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-6 leading-tight"
-                    style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    Let's Start Your{" "}
-                    <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                      Digital Transformation
-                    </span>
+                  <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                    Let's Work <span className="text-emerald-600 dark:text-emerald-400">Together</span>
                   </h2>
-
-                  <p
-                    className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-lg"
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                  >
-                    Ready to revolutionize your business operations? Our team of
-                    geospatial experts is here to transform your vision into
-                    reality with cutting-edge technology solutions.
+                  <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Ready to transform your organization with cutting-edge geospatial solutions? Our team is ready to discuss your requirements and create a tailored approach for your unique challenges.
                   </p>
-
-                  {/* Feature highlights */}
                 </div>
 
-                {/* Enhanced image max-w-7xl */}
-                <div className="relative mt-12">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-3xl filter blur-xl transform rotate-1"></div>
-                  <Image
-                    src="/contact-banner.png"
-                    alt="Digital Transformation Visualization"
-                    width={600}
-                    height={400}
-                    className="relative rounded-3xl shadow-2xl border border-white/20 backdrop-blur-sm"
-                  />
+                {/* Contact details */}
+                <div className="space-y-4">
+                  {[
+                    { icon: Globe, label: "Global Reach", value: "Operating in 50+ countries" },
+                    { icon: Clock, label: "Quick Response", value: "24-hour turnaround time" },
+                    { icon: Shield, label: "Secure & Compliant", value: "ISO 9001:2015 certified" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-lg bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                          <item.icon className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 dark:text-white">{item.label}</p>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">{item.value}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </AnimatedSection>
 
-            {/* Right side with enhanced glass form */}
-            <AnimatedSection animation="fadeInRight" className="h-full">
-              <div className="relative h-full">
-                {/* Glass morphism max-w-7xl */}
-                <div className="relative p-8 md:p-10 rounded-3xl shadow-2xl border border-white/20 dark:border-white/10 overflow-hidden h-full">
-                  {/* Glass background */}
-                  <div className="absolute inset-0 bg-white/10 dark:bg-white/5 backdrop-blur-2xl"></div>
+            {/* Right side - Form */}
+            <AnimatedSection animation="fadeInRight">
+              <div className="p-8 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h3>
 
-                  {/* Enhanced gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl"></div>
-
-                  {/* Inner glow effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent"></div>
-
-                  {/* Form content */}
-                  <div className="relative z-10 mt-5">
-                    <div className="text-center mb-8">
-                      <h3
-                        className="text-2xl font-bold text-gray-900 dark:text-white mb-2"
-                        style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
-                        }}
-                      >
-                        Start Your Journey
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">
-                        Fill out the form below and we'll get back to you within
-                        24 hours
-                      </p>
-                    </div>
-
-                    <form className="space-y-6" onSubmit={handleSubmit}>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="group">
-                          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400">
-                            Name
-                          </label>
-                          <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={enquiryForm.name}
-                            onChange={handleInputChange}
-                            className="w-full px-4 py-4 rounded-xl border border-white/30 dark:border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition-all duration-300 placeholder:text-gray-500 dark:placeholder:text-gray-400"
-                            placeholder="Enter your name"
-                          />
-                        </div>
-                        <div className="group">
-                          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400">
-                            Email Address
-                          </label>
-                          <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={enquiryForm.email}
-                            onChange={handleInputChange}
-                            className="w-full px-4 py-4 rounded-xl border border-white/30 dark:border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition-all duration-300 placeholder:text-gray-500 dark:placeholder:text-gray-400"
-                            placeholder="your.email@company.com"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="group">
-                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400">
-                          Phone Number
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={enquiryForm.phone}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-4 rounded-xl border border-white/30 dark:border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition-all duration-300 placeholder:text-gray-500 dark:placeholder:text-gray-400"
-                          placeholder="+91 1234567890"
-                        />
-                      </div>
-
-                      <div className="group">
-                        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2 transition-colors group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400">
-                          Project Details
-                        </label>
-                        <textarea
-                          rows={5}
-                          id="message"
-                          name="message"
-                          value={enquiryForm.message}
-                          onChange={handleInputChange}
-                          className="w-full px-4 py-4 rounded-xl border border-white/30 dark:border-white/20 bg-white/20 dark:bg-white/10 backdrop-blur-sm focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition-all duration-300 placeholder:text-gray-500 dark:placeholder:text-gray-400 resize-none"
-                          placeholder="Tell us about your project requirements, timeline, and goals..."
-                        ></textarea>
-                      </div>
-
-                      {/* Enhanced submit button */}
-                      <button
-                        type="submit"
-                        className="w-full relative overflow-hidden px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl group"
-                        style={{
-                          background:
-                            "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)",
-                        }}
-                      >
-                        <span className="relative z-10 flex items-center justify-center space-x-2">
-                          <span>Send Message</span>
-                          <svg
-                            className="w-5 h-5 transform transition-transform group-hover:translate-x-1"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M13 7l5 5m0 0l-5 5m5-5H6"
-                            />
-                          </svg>
-                        </span>
-                        {/* Hover effect overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </button>
-
-                      {/* Trust indicators */}
-                      <div className="text-center pt-4">
-                        <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-center space-x-2">
-                          <svg
-                            className="w-4 h-4 text-green-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          <span>Your information is secure and encrypted</span>
-                        </p>
-                      </div>
-                    </form>
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={enquiryForm.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                      placeholder="Your name"
+                    />
                   </div>
-                </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={enquiryForm.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={enquiryForm.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none"
+                      placeholder="+1 (555) 000-0000"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={enquiryForm.message}
+                      onChange={handleInputChange}
+                      rows={4}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none resize-none"
+                      placeholder="Tell us about your project..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
+                  >
+                    Send Message
+                  </button>
+                </form>
               </div>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
-      {/* Modern CTA Section */}
-      <section className="py-24 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-fixed bg-center bg-repeat opacity-50"
-          style={{
-            backgroundImage: `url("/home-banner-last.png")`,
-            backgroundAttachment: "fixed",
-            backgroundRepeat: "no-repeat",
-            objectFit: "cover",
-            backgroundSize: "cover",
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20"></div>
+      {/* Clean CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-600">
         <div className="max-w-4xl mx-auto text-center">
-          <AnimatedSection animation="fadeInUp" delay={0}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Transform Your{" "}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Infrastructure
-              </span>
-              ?
+          <AnimatedSection animation="fadeInUp">
+            <div className="inline-block px-4 py-2 rounded-full bg-emerald-50/20 dark:bg-emerald-900/30 border border-emerald-300/50 dark:border-emerald-700/50 mb-6">
+              <span className="text-sm font-bold text-emerald-100 dark:text-emerald-300">🚀 Get Started</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+              Ready to <span className="text-emerald-200">Get Started?</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              Let's discuss how our geospatial solutions can streamline your
-              operations, enhance data accuracy, and support informed
-              decision-making.
+            <p className="text-lg text-emerald-100 mb-10 max-w-2xl mx-auto">
+              Join 500+ organizations that trust TechCulture Solutions for their geospatial needs.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                className="px-8 py-3 bg-white text-emerald-600 hover:bg-emerald-50 font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+                asChild
+              >
+                <Link href="/contact">
+                  Schedule a Demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+              <Button
+                className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-emerald-600 bg-transparent font-semibold rounded-lg transition-colors inline-flex items-center gap-2"
+                asChild
+              >
+                <Link href="/services">
+                  Explore Services
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>
