@@ -35,14 +35,14 @@ const projectionConfig = {
 
 const WorkExperienceSection = () => {
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+    <section className="py-24 3xl:py-32 4xl:py-40 px-4 3xl:px-12 relative overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/5 rounded-full filter blur-3xl -z-10"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto relative z-10">
         <AnimatedSection>
           <div className="text-center mb-16">
             {/* Badge */}
@@ -51,18 +51,18 @@ const WorkExperienceSection = () => {
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+            <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
               Pan-India <span className="text-emerald-600 dark:text-emerald-400">Services</span>
             </h2>
 
             {/* Enhanced Description */}
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
               We've successfully delivered <span className="font-semibold text-emerald-600 dark:text-emerald-400">500+ projects</span> and cutting-edge solutions across <span className="font-semibold text-emerald-600 dark:text-emerald-400">multiple states</span>, building a strong network of satisfied clients throughout the country.
             </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 3xl:gap-20 items-center">
           {/* Left side: Interactive Map */}
           <AnimatedSection animation="fadeInLeft">
             <div className="relative">

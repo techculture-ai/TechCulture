@@ -31,15 +31,15 @@ const { settingsData, setSettingsData } = useSite();
       <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/5 rounded-full filter blur-3xl -z-10"></div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-12 relative z-10">
+      <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto px-6 3xl:px-10 4xl:px-16 pt-20 3xl:pt-28 pb-12 3xl:pb-16 relative z-10">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-4 gap-12 3xl:gap-16 4xl:gap-20 mb-12 3xl:mb-16">
           {/* Brand Section */}
           <div>
-            <div className="text-3xl font-bold mb-6">
+            <div className="text-3xl 3xl:text-4xl font-bold mb-6 3xl:mb-8">
               TechCulture <span className="text-emerald-400">Solutions</span>
             </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
+            <p className="text-gray-400 mb-6 3xl:mb-8 leading-relaxed 3xl:text-lg">
               Innovating the future, one solution at a time. Your trusted
               partner in digital transformation.
             </p>
@@ -89,7 +89,7 @@ const { settingsData, setSettingsData } = useSite();
 
           {/* Services Section */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+            <h4 className="text-lg 3xl:text-xl font-semibold text-white mb-6 3xl:mb-8 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
               Services
             </h4>
@@ -115,7 +115,7 @@ const { settingsData, setSettingsData } = useSite();
 
           {/* Company Section */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+            <h4 className="text-lg 3xl:text-xl font-semibold text-white mb-6 3xl:mb-8 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
               Company
             </h4>
@@ -157,7 +157,7 @@ const { settingsData, setSettingsData } = useSite();
 
           {/* Contact Info Section */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
+            <h4 className="text-lg 3xl:text-xl font-semibold text-white mb-6 3xl:mb-8 flex items-center gap-2">
               <span className="w-1 h-6 bg-emerald-500 rounded-full"></span>
               Contact Info
             </h4>

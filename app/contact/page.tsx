@@ -232,13 +232,13 @@ export default function ContactPage() {
      
 
       {/* Contact Overview Section */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      <section className="py-8 sm:py-12 md:py-16 3xl:py-24 4xl:py-32 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16 3xl:mt-20">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+          <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-12 3xl:mb-16">
+            <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
               Get In Touch <span className="text-emerald-600 dark:text-emerald-400">With Us</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
               Ready to transform your business? Let's discuss your project and explore how we can help you achieve your goals
             </p>
           </AnimatedSection>
@@ -246,9 +246,9 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section id="contact-form" className="py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+      <section id="contact-form" className="py-10 3xl:py-16 px-6 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 3xl:gap-24">
             {/* Contact Form */}
             <div>
               <div className="mb-8">
@@ -428,8 +428,8 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 3xl:py-28 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection animation="fadeInUp">
             <div className="mb-8">
               <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
@@ -439,7 +439,7 @@ export default function ContactPage() {
                 Head Office
               </h2>
             </div>
-            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96">
+            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96 3xl:h-[500px]">
               {settingsData ? (
                 <div
                   className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"
@@ -460,7 +460,7 @@ export default function ContactPage() {
             </div>
           </AnimatedSection>
         </div>
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-[1700px] mx-auto">
           <AnimatedSection animation="fadeInUp">
             <div className="mb-8">
               <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
@@ -470,7 +470,7 @@ export default function ContactPage() {
                 Corporate Office
               </h2>
             </div>
-            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96">
+            <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 h-96 3xl:h-[500px]">
               {settingsData ? (
                 <div
                   className="w-full h-full [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:border-0"

@@ -139,13 +139,13 @@ export default function TeamPage() {
      
 
       {/* Team Overview Section */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
-        <div className="max-w-7xl mx-auto">
-            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      <section className="py-8 sm:py-12 md:py-16 3xl:py-24 4xl:py-32 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16 3xl:mt-20">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12 3xl:mb-16">
+            <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
               Team Behind <span className="text-emerald-600 dark:text-emerald-400">Success</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
               Meet the passionate professionals who bring innovation, expertise, and dedication to every project we undertake
             </p>
           </AnimatedSection>
@@ -153,8 +153,8 @@ export default function TeamPage() {
       </section>
 
       {/* Team Categories Navigation */}
-      <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-6 sm:py-8 md:py-10 3xl:py-14 px-6 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           {/* Tab Navigation */}
           <div className="mb-8 sm:mb-10 md:mb-12 flex justify-center">
             <AnimatedSection>
@@ -180,8 +180,8 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members Grid */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 3xl:py-28 4xl:py-36 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {categories.find((cat) => cat.id === activeCategory)?.label}
@@ -191,7 +191,7 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-8 3xl:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
           
             {currentTeam.map((member: Employee, index: number) => {
               const gradients = [

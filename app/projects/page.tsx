@@ -82,13 +82,13 @@ export default function ProjectsPage() {
      
 
       {/* Projects Overview Section */}
-      <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
-        <div className="max-w-7xl mx-auto">
-            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      <section className="py-8 sm:py-12 md:py-16 3xl:py-24 4xl:py-32 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16 3xl:mt-20">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12 3xl:mb-16">
+            <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
               Featured <span className="text-emerald-600 dark:text-emerald-400">Projects</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
               Explore our diverse portfolio of successful geospatial projects that have transformed infrastructure, planning, and decision-making across India
             </p>
           </AnimatedSection>
@@ -130,8 +130,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects Grid */}
-      <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-6 sm:py-8 md:py-10 3xl:py-16 px-6 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           {/* Tab Navigation */}
           <div className="mb-8 sm:mb-10 md:mb-12 flex justify-center">
             <AnimatedSection>
@@ -162,7 +162,7 @@ export default function ProjectsPage() {
             </AnimatedSection>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-8 3xl:gap-10">
             {(activeTab === "completed"
               ? completedProjects
               : ongoingProjects
@@ -252,8 +252,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-r from-gray-50 via-emerald-50/30 to-gray-50 dark:from-slate-900 dark:via-emerald-950/20 dark:to-slate-900">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-6 sm:py-8 md:py-10 3xl:py-16 px-6 3xl:px-12 bg-gradient-to-r from-gray-50 via-emerald-50/30 to-gray-50 dark:from-slate-900 dark:via-emerald-950/20 dark:to-slate-900">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
               <h2 className="text-5xl font-bold font-poppins text-gray-900 dark:text-white mb-8">
@@ -262,7 +262,7 @@ export default function ProjectsPage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 3xl:gap-10">
             {[
               {
                 number: `${completedProjects.length}+`,
@@ -304,7 +304,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 md:py-24 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 relative overflow-hidden">
+      <section className="py-16 sm:py-20 md:py-24 3xl:py-32 4xl:py-40 px-4 3xl:px-12 bg-gradient-to-r from-emerald-600 to-teal-600 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-fixed bg-center bg-repeat opacity-50"
           style={{
@@ -316,12 +316,12 @@ export default function ProjectsPage() {
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/10"></div>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto text-center">
           <AnimatedSection animation="fadeInUp" delay={0}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-white mb-6 3xl:mb-8">
               Ready to Start Your <span className="text-emerald-100">Project?</span>
             </h2>
-            <p className="text-xl text-emerald-50 mb-12 max-w-2xl mx-auto">
+            <p className="text-xl 3xl:text-2xl text-emerald-50 mb-12 3xl:mb-16 max-w-2xl 3xl:max-w-3xl mx-auto">
               Let's discuss how our geospatial solutions can streamline your
               operations, enhance data accuracy, and support informed
               decision-making.

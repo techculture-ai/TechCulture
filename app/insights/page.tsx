@@ -155,7 +155,7 @@ export default function InsightsPage() {
       </section>
 
       {/* Search and Filter */}
-      <section className="py-16 px-6">
+      <section className="py-16 3xl:py-24 px-6 3xl:px-12">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="max-w-4xl mx-auto">
@@ -192,7 +192,7 @@ export default function InsightsPage() {
       </section>
 
       {/* Featured Article */}
-      <section className="py-16 px-6">
+      <section className="py-16 3xl:py-24 px-6 3xl:px-12">
         <div className="container mx-auto">
           <AnimatedSection>
             <Card className="glass-card glass-hover overflow-hidden max-w-6xl mx-auto">
@@ -246,7 +246,7 @@ export default function InsightsPage() {
       </section>
 
       {/* Articles Grid */}
-      <section className="py-32 px-6">
+      <section className="py-32 3xl:py-40 px-6 3xl:px-12">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
@@ -334,7 +334,7 @@ export default function InsightsPage() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-32 px-6">
+      <section className="py-32 3xl:py-40 px-6 3xl:px-12">
         <div className="container mx-auto text-center">
           <AnimatedSection>
             <Card className="glass-card glow max-w-4xl mx-auto">

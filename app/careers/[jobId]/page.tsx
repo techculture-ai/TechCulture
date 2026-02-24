@@ -295,7 +295,7 @@ export default function ApplyPage() {
         </div>
       </section>
       {/* <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20"></div> */}
-      <div className="relative max-w-4xl mx-auto py-20">
+      <div className="relative max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto py-20 3xl:py-28">
         <AnimatedSection animation="fadeInUp" delay={200}>
           <div className="glass-card p-8 rounded-3xl shadow-lg border border-white/20 bg-white/20 backdrop-blur-md">
             {submitted ? (

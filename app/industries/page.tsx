@@ -253,9 +253,9 @@ export default function IndustriesPage() {
       </section>
 
       {/* Industries Grid */}
-      <section className="pt-16 pb-20 px-6">
+      <section className="pt-16 pb-20 3xl:pt-24 3xl:pb-28 px-6 3xl:px-12">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-8 3xl:gap-10">
             {industries.map((industry, index) => (
               <AnimatedSection key={industry.id} delay={index * 100}>
                 <div 

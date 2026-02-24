@@ -112,6 +112,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom breakpoints for large desktop screens */
+  --breakpoint-3xl: 1440px;
+  --breakpoint-4xl: 1920px;
+  --breakpoint-5xl: 2560px;
 }
 
 @layer base {
@@ -414,5 +419,241 @@ html {
   
   .section-padding-lg {
     @apply py-16;
+  }
+}
+
+/* ===== Large Desktop / Ultra-wide Responsive (1440px - 2560px) ===== */
+
+/* 3xl breakpoint: 1440px+ */
+@media (min-width: 1440px) {
+  /* Expand container widths for large screens */
+  .max-w-5xl {
+    max-width: 1200px;
+  }
+  .max-w-6xl {
+    max-width: 1400px;
+  }
+  .max-w-7xl {
+    max-width: 1600px;
+  }
+  .max-w-4xl {
+    max-width: 1000px;
+  }
+  .max-w-3xl {
+    max-width: 900px;
+  }
+  .max-w-2xl {
+    max-width: 750px;
+  }
+
+  /* Typography scaling for large screens */
+  .text-5xl {
+    font-size: 3.5rem;
+    line-height: 1.1;
+  }
+  .text-6xl {
+    font-size: 4.25rem;
+    line-height: 1.1;
+  }
+  .text-7xl {
+    font-size: 5.25rem;
+    line-height: 1.05;
+  }
+  .text-4xl {
+    font-size: 2.75rem;
+    line-height: 1.15;
+  }
+  .text-3xl {
+    font-size: 2.15rem;
+    line-height: 1.2;
+  }
+  .text-2xl {
+    font-size: 1.75rem;
+    line-height: 1.3;
+  }
+  .text-xl {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  .text-lg {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  /* Increase section padding */
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Navigation spacing */
+  nav .space-x-8 > :not(:last-child) {
+    margin-right: 2.5rem;
+  }
+
+  /* Card grid improvements */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+
+  /* Footer grid */
+  footer .grid.md\:grid-cols-4 {
+    gap: 3.5rem;
+  }
+}
+
+/* 4xl breakpoint: 1920px+ (Full HD and above) */
+@media (min-width: 1920px) {
+  /* Further expand containers */
+  .max-w-5xl {
+    max-width: 1400px;
+  }
+  .max-w-6xl {
+    max-width: 1600px;
+  }
+  .max-w-7xl {
+    max-width: 1800px;
+  }
+  .max-w-4xl {
+    max-width: 1200px;
+  }
+  .max-w-3xl {
+    max-width: 1000px;
+  }
+  .max-w-2xl {
+    max-width: 850px;
+  }
+
+  /* Typography scaling for Full HD */
+  .text-5xl {
+    font-size: 4rem;
+    line-height: 1.1;
+  }
+  .text-6xl {
+    font-size: 4.75rem;
+    line-height: 1.05;
+  }
+  .text-7xl {
+    font-size: 5.75rem;
+    line-height: 1.05;
+  }
+  .text-4xl {
+    font-size: 3rem;
+    line-height: 1.15;
+  }
+  .text-3xl {
+    font-size: 2.35rem;
+    line-height: 1.2;
+  }
+  .text-2xl {
+    font-size: 1.875rem;
+    line-height: 1.3;
+  }
+  .text-xl {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+  .text-lg {
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  /* Increase section padding */
+  section {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* Navigation spacing */
+  nav .space-x-8 > :not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  /* Card grid improvements */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  }
+
+  /* Footer grid */
+  footer .grid.md\:grid-cols-4 {
+    gap: 4rem;
+  }
+}
+
+/* 5xl breakpoint: 2560px (QHD / Ultra-wide) */
+@media (min-width: 2560px) {
+  /* Maximum container expansion */
+  .max-w-5xl {
+    max-width: 1600px;
+  }
+  .max-w-6xl {
+    max-width: 1900px;
+  }
+  .max-w-7xl {
+    max-width: 2200px;
+  }
+  .max-w-4xl {
+    max-width: 1400px;
+  }
+  .max-w-3xl {
+    max-width: 1200px;
+  }
+  .max-w-2xl {
+    max-width: 1000px;
+  }
+
+  /* Typography scaling for QHD */
+  .text-5xl {
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+  .text-6xl {
+    font-size: 5.5rem;
+    line-height: 1.05;
+  }
+  .text-7xl {
+    font-size: 6.5rem;
+    line-height: 1.05;
+  }
+  .text-4xl {
+    font-size: 3.5rem;
+    line-height: 1.15;
+  }
+  .text-3xl {
+    font-size: 2.75rem;
+    line-height: 1.2;
+  }
+  .text-2xl {
+    font-size: 2.125rem;
+    line-height: 1.3;
+  }
+  .text-xl {
+    font-size: 1.625rem;
+    line-height: 1.5;
+  }
+  .text-lg {
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+
+  /* Increase section padding */
+  section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  /* Navigation spacing */
+  nav .space-x-8 > :not(:last-child) {
+    margin-right: 3.5rem;
+  }
+
+  /* Card grid improvements */
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  }
+
+  /* Footer grid */
+  footer .grid.md\:grid-cols-4 {
+    gap: 5rem;
   }
 }

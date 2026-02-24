@@ -208,8 +208,8 @@ const categories = [
           </AnimatedSection>
         </div>
       </section>
-      <section className="py-8 px-4 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 z-40 backdrop-blur-md bg-white/80 dark:bg-gray-950/80">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-8 3xl:py-12 px-4 3xl:px-12 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800 z-40 backdrop-blur-md bg-white/80 dark:bg-gray-950/80">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection>
             <div className="flex justify-center space-x-1">
               <div className="flex glass-card rounded-full p-2">
@@ -236,7 +236,7 @@ const categories = [
           </AnimatedSection>
         </div>
       </section>
-      <div className="container mx-auto px-4 py-12 sm:py-16 md:py-20">
+      <div className="container mx-auto px-4 3xl:px-12 py-12 sm:py-16 md:py-20 3xl:py-28">
         {/* Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           <AnimatePresence>

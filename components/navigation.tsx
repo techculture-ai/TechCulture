@@ -101,23 +101,23 @@ export function Navigation() {
           : "top-0 bg-white/95 dark:bg-slate-950/95"
       }`}
     >
-      <div className="flex justify-between items-center px-6 sm:px-10 lg:px-16 py-4">
+      <div className="flex justify-between items-center px-6 sm:px-10 lg:px-16 3xl:px-20 4xl:px-28 py-4 3xl:py-5">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 z-50">
-          <div className="relative h-12 w-auto">
+          <div className="relative h-12 3xl:h-14 4xl:h-16 w-auto">
             <Image
               src="http://res.cloudinary.com/dakf05m4x/image/upload/v1755172004/siteSetting/logo-e17294ba-9b7a-438d-9e5e-0154a1ca704d.png"
               alt="TechCulture Solutions Logo"
               height={25}
               width={80}
-              className="object-contain"
+              className="object-contain 3xl:scale-110 4xl:scale-125 origin-left"
               priority
             />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8 3xl:space-x-10 4xl:space-x-12">
           {navItems.map((item) =>
             item.dropdown ? (
               <div
@@ -127,7 +127,7 @@ export function Navigation() {
                 onMouseLeave={handleDropdownLeave}
               >
                 <button
-                  className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${
+                  className={`flex items-center gap-1.5 text-sm 3xl:text-base 4xl:text-lg font-medium transition-colors duration-300 ${
                     item.dropdown.some((subItem) => pathname === subItem.href)
                       ? "text-gray-900 dark:text-white border-b-2 border-emerald-600"
                       : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
@@ -164,7 +164,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-300 ${
+                className={`text-sm 3xl:text-base 4xl:text-lg font-medium transition-colors duration-300 ${
                   pathname === item.href
                     ? "text-gray-900 dark:text-white border-b-2 border-emerald-600"
                     : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
@@ -181,7 +181,7 @@ export function Navigation() {
           <ThemeToggle />
           {/* Get In Touch Button - Desktop */}
           <Link href="/contact" className="hidden lg:block">
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors">
+            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2 3xl:px-8 3xl:py-3 3xl:text-base rounded-lg transition-colors">
               Get In Touch
             </Button>
           </Link>

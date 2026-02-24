@@ -158,13 +158,13 @@ const ServicePage = () => {
      
 
         {/* Services Overview Section */}
-        <section className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+        <section className="py-8 sm:py-12 md:py-16 3xl:py-24 4xl:py-32 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10 mt-8 sm:mt-12 md:mt-16 3xl:mt-20">
+          <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+            <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-8 sm:mb-10 md:mb-12 3xl:mb-16">
+              <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                 Our Core <span className="text-emerald-600 dark:text-emerald-400">Services</span>
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
                 Comprehensive geospatial solutions designed to transform your business operations
               </p>
             </AnimatedSection>
@@ -172,10 +172,10 @@ const ServicePage = () => {
         </section>
 
         {/* Core Services Grid */}
-        <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-6 sm:py-8 md:py-10 3xl:py-16 px-6 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+          <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             {coreServices && coreServices.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 3xl:gap-10">
                 {coreServices.map((service, index) => {
                   const iconData = coreServicesIcon[index] || coreServicesIcon[0]; // Fallback to first icon
                   return (
@@ -257,14 +257,14 @@ const ServicePage = () => {
         </section>
 
         {/* Stats Section */}
-        <section className="py-6 sm:py-8 md:py-10 px-6 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-6 sm:py-8 md:py-10 3xl:py-16 px-6 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+          <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <AnimatedSection
               animation="fadeInUp"
               delay={0}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold mb-6 3xl:mb-8 text-gray-900 dark:text-white">
                 Why Choose <span className="text-emerald-600 dark:text-emerald-400">TechCulture?</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -272,7 +272,7 @@ const ServicePage = () => {
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 3xl:gap-10">
               {stats.map((stat, index) => (
                 <AnimatedSection
                   key={index}
@@ -301,24 +301,24 @@ const ServicePage = () => {
         </section>
 
         {/* main Services Section */}
-        <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-12 sm:py-16 md:py-20 3xl:py-28 4xl:py-36 px-4 3xl:px-12 bg-gradient-to-b from-white to-emerald-50/20 dark:from-slate-950 dark:to-emerald-950/10">
+          <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
             <AnimatedSection
               animation="fadeInUp"
               delay={0}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold mb-6 3xl:mb-8 text-gray-900 dark:text-white">
                 Our Service <span className="text-emerald-600 dark:text-emerald-400">Portfolio</span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl 3xl:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl 3xl:max-w-4xl mx-auto">
                 At TechCulture Solutions Private Limited, we deliver modern
                 geospatial technology, software, and field engineering solutions
                 tailored to your sector.
               </p>
             </AnimatedSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 3xl:gap-10">
               {mainServices && mainServices.length > 0 ? mainServices.map((service, index) => {
                 const iconData = mainServicesIcon[index] || mainServicesIcon[0]; // Fallback to first icon
                 return (
@@ -392,7 +392,7 @@ const ServicePage = () => {
           </div>
         </section>
 
-        <section className="py-16 sm:py-18 md:py-20 px-4 relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-600">
+        <section className="py-16 sm:py-18 md:py-20 3xl:py-28 4xl:py-36 px-4 3xl:px-12 relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-600">
           {/* <div
             className="absolute inset-0 bg-fixed bg-center bg-repeat "
             style={{
@@ -404,12 +404,12 @@ const ServicePage = () => {
             }}
           ></div> */}
 
-          <div className="relative max-w-4xl mx-auto text-center">
+          <div className="relative max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto text-center">
             <AnimatedSection animation="fadeInUp" delay={0}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold mb-6 3xl:mb-8 text-white">
                 Ready to Transform Your Business?
               </h2>
-              <p className="text-xl text-emerald-50 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl 3xl:text-2xl text-emerald-50 mb-8 3xl:mb-12 max-w-2xl 3xl:max-w-3xl mx-auto">
                 Let's discuss how our geospatial solutions can streamline your
                 operations, enhance data accuracy, and support informed
                 decision-making.

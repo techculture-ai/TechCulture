@@ -112,18 +112,18 @@ export default function CareersPage() {
        
 
       {/* Open Positions Section */}
-      <section id="jobs" className="py-8 sm:py-12 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto">
+      <section id="jobs" className="py-8 sm:py-12 md:py-20 lg:py-28 3xl:py-36 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-white dark:bg-slate-900">
+        <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-[1700px] mx-auto">
           {/* Section Header */}
           <AnimatedSection animation="fadeInUp">
             <div className="text-center mb-16">
               <div className="inline-block px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 mb-4">
                 <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Open Positions</span>
               </div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              <h2 className="text-4xl sm:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8">
                 Start Your Journey
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 max-w-2xl 3xl:max-w-3xl mx-auto">
                 Find the role that's right for you and help shape the future of geospatial technology.
               </p>
             </div>
@@ -281,7 +281,7 @@ export default function CareersPage() {
 
       {/* CTA Section */}
 
-      <section className="py-16 sm:py-20 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
+      <section className="py-16 sm:py-20 md:py-24 3xl:py-32 4xl:py-40 px-4 3xl:px-12 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
         <div
           className="absolute inset-0 bg-fixed bg-center bg-repeat opacity-50"
           style={{
@@ -293,15 +293,15 @@ export default function CareersPage() {
           }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20"></div>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto text-center">
           <AnimatedSection animation="fadeInUp" delay={0}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold text-white mb-6 3xl:mb-8">
               Ready to Join
               <span className="block bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
                 Our Team?
               </span>
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p className="text-xl 3xl:text-2xl text-gray-300 mb-12 3xl:mb-16 max-w-2xl 3xl:max-w-3xl mx-auto">
               Don't see a role that fits? We're always looking for talented individuals. Send us your resume and let's explore possibilities together.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

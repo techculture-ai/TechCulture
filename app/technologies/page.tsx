@@ -432,14 +432,14 @@ export default function TechnologiesPage() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section className="py-20 3xl:py-28 px-4 3xl:px-12 bg-white dark:bg-gray-900">
           <div className="container mx-auto">
-            <div className="max-w-7xl mx-auto">
-              <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-white dark:to-blue-200 bg-clip-text text-transparent">
+            <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
+              <AnimatedSection animation="fadeInUp" delay={0} className="text-center mb-16 3xl:mb-20">
+                <h2 className="text-4xl md:text-5xl 3xl:text-6xl font-bold mb-6 3xl:mb-8 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-white dark:to-blue-200 bg-clip-text text-transparent">
                   tcServices Features
                 </h2>
-                <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                <p className="text-xl 3xl:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl 3xl:max-w-4xl mx-auto">
                   Comprehensive functionality designed for modern geospatial challenges
                 </p>
               </AnimatedSection>
@@ -447,7 +447,7 @@ export default function TechnologiesPage() {
               {/* Core Features */}
               <div className="mb-16">
                 <h3 className="text-2xl font-bold mb-8 text-center text-gray-800 dark:text-gray-200">Core Platform Features</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 3xl:grid-cols-5 gap-6 3xl:gap-8">
                   {coreFeatures.map((feature, index) => (
                     <AnimatedSection key={index} animation="fadeInUp" delay={index * 50}>
                       <Card className="p-6 h-full bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border border-gray-200/50 dark:border-gray-700/50 hover:shadow-xl hover:scale-105 transition-all duration-300 group">

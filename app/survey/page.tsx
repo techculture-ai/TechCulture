@@ -272,7 +272,7 @@ export default function SurveyPage() {
 
       {/* Detailed Survey Section */}
       {activeSurvey && (
-        <section className="py-16 px-6 bg-gradient-to-br from-purple-50 to-blue-50">
+        <section className="py-16 3xl:py-24 px-6 3xl:px-12 bg-gradient-to-br from-purple-50 to-blue-50">
           <div className="container mx-auto">
             {(() => {
               const survey = surveyTypes.find(s => s.id === activeSurvey)
@@ -404,7 +404,7 @@ export default function SurveyPage() {
       )}
 
       {/* Technology Section */}
-      <section className="py-16 px-6">
+      <section className="py-16 3xl:py-24 px-6 3xl:px-12">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
@@ -441,7 +441,7 @@ export default function SurveyPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-6 bg-gradient-to-br from-slate-50 to-gray-50">
+      <section className="py-16 3xl:py-24 px-6 3xl:px-12 bg-gradient-to-br from-slate-50 to-gray-50">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">

@@ -273,20 +273,20 @@ export default function HomePage() {
     <div className="min-h-screen ">
       {/* Clean & Minimal Hero Section */}
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-emerald-50/30 to-white dark:from-slate-950 dark:via-emerald-950/20 dark:to-slate-950">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 mt-16">
+        <div className="relative z-10 max-w-5xl 3xl:max-w-6xl 4xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 3xl:px-12 4xl:px-16 text-center py-20 mt-16">
           <AnimatedSection animation="fadeInUp" delay={0}>
             {/* Minimal badge */}
-            <div className="inline-block mb-6 px-4 py-2 rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20">
-              <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">Geospatial Innovation</span>
+            <div className="inline-block mb-6 3xl:mb-8 px-4 py-2 3xl:px-5 3xl:py-2.5 rounded-full border border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-900/20">
+              <span className="text-sm 3xl:text-base font-semibold text-emerald-700 dark:text-emerald-300">Geospatial Innovation</span>
             </div>
 
             {/* Clean heading */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-[1.1] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl 3xl:text-8xl 5xl:text-9xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-[1.1] tracking-tight">
               Advanced Geospatial Solutions
             </h1>
 
             {/* Animated Services Typewriter */}
-            <div className="h-20 sm:h-24 flex items-center justify-center mb-10">
+            <div className="h-20 sm:h-24 3xl:h-28 4xl:h-32 flex items-center justify-center mb-10 3xl:mb-14">
               <TypewriterServices services={[
                 "GIS Platform Development",
                 "3D Geospatial Modelling",
@@ -298,21 +298,21 @@ export default function HomePage() {
             </div>
 
             {/* Clean subheading */}
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p className="text-lg sm:text-xl 3xl:text-2xl text-gray-600 dark:text-gray-400 max-w-2xl 3xl:max-w-3xl mx-auto mb-10 3xl:mb-14 leading-relaxed">
               Enterprise-grade spatial technology powering smarter decisions for governments and global organizations.
             </p>
 
             {/* Clean CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 3xl:gap-6">
               <Button
-                className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
+                className="px-8 py-3 3xl:px-10 3xl:py-4 3xl:text-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg transition-colors"
                 asChild
               >
                 <Link href="#services">Explore Services</Link>
               </Button>
               <Button
                 variant="outline"
-                className="px-8 py-3 border border-gray-300 dark:border-gray-600 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900"
+                className="px-8 py-3 3xl:px-10 3xl:py-4 3xl:text-lg border border-gray-300 dark:border-gray-600 font-semibold rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900"
                 asChild
               >
                 <Link href="/contact">Schedule Demo</Link>
@@ -326,9 +326,9 @@ export default function HomePage() {
       </section>
 
       {/* Clean & Minimal About Section */}
-      <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-blue-50/40 dark:from-slate-950 dark:to-blue-950/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section id="about" className="py-20 sm:py-28 3xl:py-36 4xl:py-44 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-gradient-to-b from-gray-50 to-blue-50/40 dark:from-slate-950 dark:to-blue-950/20">
+        <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-[1700px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 3xl:gap-28 4xl:gap-36 items-center">
             {/* Image Section - Minimal */}
             <AnimatedSection animation="fadeInLeft" delay={0}>
               <div className="relative">
@@ -352,13 +352,13 @@ export default function HomePage() {
                 </div>
 
                 {/* Heading */}
-                <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+                <h2 className="text-4xl sm:text-5xl 3xl:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
                   Why Choose
                   <span className="block text-emerald-600 dark:text-emerald-400">TechCulture Solutions?</span>
                 </h2>
 
                 {/* Description */}
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
                   With over 15 years of expertise in geospatial technology, we deliver enterprise-grade solutions that transform data into actionable intelligence for governments and global organizations.
                 </p>
 
@@ -400,18 +400,18 @@ export default function HomePage() {
       </section>
 
       {/* Clean Services Section */}
-      <section id="services" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-50 via-emerald-50/40 to-gray-50 dark:from-slate-900 dark:via-emerald-950/30 dark:to-slate-900 overflow-hidden">
-        <div className="relative max-w-6xl mx-auto">
+      <section id="services" className="relative py-20 sm:py-28 3xl:py-36 4xl:py-44 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-gradient-to-r from-gray-50 via-emerald-50/40 to-gray-50 dark:from-slate-900 dark:via-emerald-950/30 dark:to-slate-900 overflow-hidden">
+        <div className="relative max-w-6xl 3xl:max-w-7xl 4xl:max-w-[1700px] mx-auto">
           {/* Section Header */}
           <AnimatedSection animation="fadeInUp">
             <div className="text-center mb-8 relative z-10">
               <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
                 <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">Our Services</span>
               </div>
-              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                 Comprehensive Geospatial <span className="text-emerald-600 dark:text-emerald-400">Services</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 max-w-2xl 3xl:max-w-3xl mx-auto">
                 Enterprise solutions designed to meet your organization's spatial data and intelligence needs.
               </p>
             </div>
@@ -437,9 +437,9 @@ export default function HomePage() {
                     ];
 
                     return (
-                      <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-4">
-                        <div 
-                          className="group relative h-full rounded-xl border border-emerald-200/50 dark:border-emerald-800/50 bg-white dark:bg-slate-800 overflow-hidden hover:shadow-2xl hover:border-emerald-300 dark:hover:border-emerald-700 transition-all duration-500"
+                      <div key={index} className="w-full md:w-1/3 flex-shrink-0 px-4 3xl:px-6">
+                        <div
+                          className="group relative h-full rounded-xl 3xl:rounded-2xl border border-emerald-200/50 dark:border-emerald-800/50 bg-white dark:bg-slate-800 overflow-hidden hover:shadow-2xl hover:border-emerald-300 dark:hover:border-emerald-700 transition-all duration-500"
                         >
                           {/* Background Pattern */}
                           <div 
@@ -455,7 +455,7 @@ export default function HomePage() {
                           <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/90 to-white/80 dark:from-slate-800/90 dark:via-slate-800/95 dark:to-slate-800/90"></div>
 
                           {/* Content */}
-                          <div className="relative z-10 p-8 h-full flex flex-col min-h-[450px]">
+                          <div className="relative z-10 p-8 3xl:p-10 4xl:p-12 h-full flex flex-col min-h-[450px] 3xl:min-h-[500px] 4xl:min-h-[550px]">
                             {/* Icon and number */}
                             <div className="flex items-start justify-between mb-6">
                               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-900/20 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
@@ -557,17 +557,17 @@ export default function HomePage() {
       </section>
 
       {/* Clean Projects Section */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-slate-50 dark:from-slate-950 dark:to-slate-900 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative py-20 sm:py-28 3xl:py-36 4xl:py-44 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-gradient-to-b from-white to-slate-50 dark:from-slate-950 dark:to-slate-900 overflow-hidden">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection animation="fadeInUp">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
                 <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">✨ Success Stories</span>
               </div>
-              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                 Featured <span className="text-emerald-600 dark:text-emerald-400">Projects</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
                 Transforming data into actionable intelligence across diverse industries
               </p>
             </div>
@@ -585,10 +585,10 @@ export default function HomePage() {
               >
                 {slicedProjectData && slicedProjectData.length > 0 &&
                   slicedProjectData.map((project: any, index: number) => (
-                    <div key={project._id} className="w-full md:w-1/3 flex-shrink-0 px-3">
+                    <div key={project._id} className="w-full md:w-1/3 flex-shrink-0 px-3 3xl:px-5">
                       <div className="group relative h-full rounded-2xl overflow-hidden bg-white dark:bg-slate-800/80 backdrop-blur border border-gray-200/60 dark:border-slate-700/60 hover:border-blue-400/80 dark:hover:border-blue-600/80 shadow-lg hover:shadow-2xl transition-all duration-500">
                         {/* Image Container with enhanced overlay */}
-                        <div className="relative h-72 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                        <div className="relative h-72 3xl:h-80 4xl:h-96 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
                           <Image
                             src={project.image}
                             alt={project.title}
@@ -614,7 +614,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Content - Redesigned */}
-                        <div className="p-8 space-y-4">
+                        <div className="p-8 3xl:p-10 4xl:p-12 space-y-4 3xl:space-y-5">
                           {/* Title */}
                           <h3 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                             {project.title}
@@ -707,21 +707,21 @@ export default function HomePage() {
       <WorkExperienceSection />
 
       {/* Modern Testimonials Section */}
-      <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white to-indigo-50/20 dark:from-slate-950 dark:to-indigo-950/20">
+      <section className="relative py-20 sm:py-28 3xl:py-36 4xl:py-44 px-4 sm:px-6 lg:px-8 3xl:px-12 overflow-hidden bg-gradient-to-b from-white to-indigo-50/20 dark:from-slate-950 dark:to-indigo-950/20">
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-200/5 dark:bg-indigo-900/10 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-200/5 dark:bg-blue-900/10 rounded-full blur-3xl -z-10"></div>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection animation="fadeInUp">
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
                 <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">⭐ Client Testimonials</span>
               </div>
-              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                 What Our <span className="text-emerald-600 dark:text-emerald-400">Clients Say</span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 max-w-3xl 3xl:max-w-4xl mx-auto leading-relaxed">
                 Discover how organizations worldwide leverage TechCulture Solutions to transform their geospatial data into strategic competitive advantages
               </p>
             </div>
@@ -763,14 +763,14 @@ export default function HomePage() {
         </div>
       </section>
       {/* Technology Partners Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 3xl:py-28 4xl:py-36 px-4 3xl:px-12 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+        <div className="max-w-7xl 3xl:max-w-[1600px] 4xl:max-w-[1800px] mx-auto">
           <AnimatedSection>
             <div className="text-center mb-20">
               <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
                 <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">🤝 Strategic Partnerships</span>
               </div>
-              <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+              <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                 Trusted by Leading <span className="text-emerald-600 dark:text-emerald-400">Technology Providers</span>
               </h2>
               <p className="text-md md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -806,9 +806,9 @@ export default function HomePage() {
       </section>
 
       {/* Clean Contact Section */}
-      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-emerald-50/30 dark:from-slate-900 dark:to-emerald-950/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="py-20 sm:py-28 3xl:py-36 4xl:py-44 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-gradient-to-br from-gray-50 to-emerald-50/30 dark:from-slate-900 dark:to-emerald-950/20">
+        <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-[1700px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 3xl:gap-24 4xl:gap-32 items-center">
             {/* Left side - Content */}
             <AnimatedSection animation="fadeInLeft">
               <div className="space-y-8">
@@ -816,10 +816,10 @@ export default function HomePage() {
                   <div className="inline-block px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-300 dark:border-emerald-700 mb-6">
                     <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">💬 Contact Us</span>
                   </div>
-                  <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                  <h2 className="text-5xl sm:text-6xl 3xl:text-7xl font-bold text-gray-900 dark:text-white mb-6 3xl:mb-8 leading-tight">
                     Let's Work <span className="text-emerald-600 dark:text-emerald-400">Together</span>
                   </h2>
-                  <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-lg 3xl:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
                     Ready to transform your organization with cutting-edge geospatial solutions? Our team is ready to discuss your requirements and create a tailored approach for your unique challenges.
                   </p>
                 </div>
@@ -849,7 +849,7 @@ export default function HomePage() {
 
             {/* Right side - Form */}
             <AnimatedSection animation="fadeInRight">
-              <div className="p-8 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700">
+              <div className="p-8 3xl:p-10 4xl:p-12 bg-white dark:bg-slate-800 rounded-lg 3xl:rounded-xl border border-gray-200 dark:border-gray-700">
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a Message</h3>
 
                 <form className="space-y-4" onSubmit={handleSubmit}>
@@ -923,16 +923,16 @@ export default function HomePage() {
       </section>
 
       {/* Clean CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-600">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 3xl:py-28 4xl:py-36 px-4 sm:px-6 lg:px-8 3xl:px-12 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-600">
+        <div className="max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto text-center">
           <AnimatedSection animation="fadeInUp">
             <div className="inline-block px-4 py-2 rounded-full bg-emerald-50/20 dark:bg-emerald-900/30 border border-emerald-300/50 dark:border-emerald-700/50 mb-6">
               <span className="text-sm font-bold text-emerald-100 dark:text-emerald-300">🚀 Get Started</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+            <h2 className="text-4xl sm:text-5xl 3xl:text-6xl font-bold text-white mb-6 3xl:mb-8 leading-tight">
               Ready to <span className="text-emerald-200">Get Started?</span>
             </h2>
-            <p className="text-lg text-emerald-100 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg 3xl:text-xl text-emerald-100 mb-10 3xl:mb-14 max-w-2xl 3xl:max-w-3xl mx-auto">
               Join 500+ organizations that trust TechCulture Solutions for their geospatial needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
