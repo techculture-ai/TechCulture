@@ -190,6 +190,13 @@ const { settingsData, setSettingsData } = useSite();
                         <div>{settingsData.registeredAddress}</div>
                       </div>
                     )}
+                     <div>
+                        <div className="font-medium text-white mb-1 ">For HR contact</div>
+                        <div className="flex items-center">
+                        <Phone className="w-4 h-2 text-emerald-400 flex-shrink-0 mt-0.5" />
+                        <div>98718 67076</div>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>
